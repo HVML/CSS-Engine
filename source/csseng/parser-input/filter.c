@@ -14,11 +14,11 @@
 #include <iconv.h>
 #endif
 
-#include <parserutils/charset/mibenum.h>
-#include <parserutils/charset/codec.h>
+#include "parser-charset/mibenum.h"
+#include "parser-charset/codec.h"
 
-#include "input/filter.h"
-#include "utils/utils.h"
+#include "parser-input/filter.h"
+#include "parser-utils/utils.h"
 
 /** Input filter */
 struct parserutils_filter {

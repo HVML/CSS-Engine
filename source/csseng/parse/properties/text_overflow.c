@@ -72,6 +72,7 @@ css_error css__parse_text_overflow_impl(css_language *c,
 		const parserutils_vector *vector, int *ctx,
 		css_style *result, int np)
 {
+	(void)np;
 	int orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;

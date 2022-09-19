@@ -9,13 +9,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/charset/mibenum.h>
+#include "parser-charset/mibenum.h"
+#include "parser-utils/endian.h"
+#include "parser-utils/utils.h"
 
-#include "charset/codecs/codec_impl.h"
-#include "utils/endian.h"
-#include "utils/utils.h"
+#include "parser-charset/codecs/codec_impl.h"
+#include "parser-charset/codecs/8859_tables.h"
 
-#include "charset/codecs/8859_tables.h"
 
 static struct {
 	uint16_t mib;

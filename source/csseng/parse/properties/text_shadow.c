@@ -59,12 +59,11 @@ css_error css__parse_text_shadow_impl(css_language *c,
 		const parserutils_vector *vector, int *ctx,
 		css_style *result, int np)
 {
+    (void)np;
     int orig_ctx = *ctx;
 	css_error error = CSS_INVALID;
 	const css_token *token;
 	bool match;
-
-    int last_ctx = *ctx;
 
     css_fixed lengths[LENGTH_SIZE];
     uint32_t  units[LENGTH_SIZE];

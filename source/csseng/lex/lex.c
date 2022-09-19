@@ -26,11 +26,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include <parserutils/charset/utf8.h>
-#include <parserutils/input/inputstream.h>
-#include <parserutils/utils/buffer.h>
+#include "parser-charset/utf8.h"
+#include "parser-input/inputstream.h"
+#include "parser-utils/buffer.h"
 
-#include <libcss/errors.h>
+#include "csseng_errors.h"
 
 #include "lex/lex.h"
 #include "utils/parserutilserror.h"

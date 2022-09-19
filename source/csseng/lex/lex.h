@@ -8,13 +8,13 @@
 #ifndef css_lex_lex_h_
 #define css_lex_lex_h_
 
-#include <libwapcaplet/libwapcaplet.h>
+#include "csseng_wapcaplet.h"
 
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
-#include <libcss/types.h>
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_types.h"
 
-#include <parserutils/input/inputstream.h>
+#include "parser-input/inputstream.h"
 
 typedef struct css_lexer css_lexer;
 

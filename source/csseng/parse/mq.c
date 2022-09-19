@@ -9,7 +9,7 @@
 
 #include <string.h>
 
-#include <libcss/fpmath.h>
+#include "csseng_fpmath.h"
 
 #include "stylesheet.h"
 #include "bytecode/bytecode.h"

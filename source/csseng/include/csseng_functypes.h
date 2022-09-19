@@ -8,16 +8,15 @@
 #ifndef libcss_functypes_h_
 #define libcss_functypes_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 
-#include <libcss/types.h>
+#include "csseng_types.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifdef __cplusplus
 }

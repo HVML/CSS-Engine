@@ -7,8 +7,8 @@
 
 #include <string.h>
 
-#include "charset/aliases.h"
-#include "charset/codecs/codec_impl.h"
+#include "aliases.h"
+#include "codecs/codec_impl.h"
 
 extern parserutils_charset_handler charset_ascii_codec_handler;
 extern parserutils_charset_handler charset_8859_codec_handler;

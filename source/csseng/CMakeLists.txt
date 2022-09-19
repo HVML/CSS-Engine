@@ -9,7 +9,6 @@ set(CSSEng_PRIVATE_INCLUDE_DIRECTORIES
     "${CSSENG_DIR}/include"
     "${CSSEng_DERIVED_SOURCES_DIR}"
     "${FORWARDING_HEADERS_DIR}"
-    "${CMAKE_BINARY_DIR}/source/csseng"
 )
 
 # TODO: List the headers should be installed to system here.
@@ -35,9 +34,8 @@ set(CSSEng_PLATFORM_INDEPENDENT_DIRS
     "parser-charset"
     "parser-input"
     "parser-utils"
-    "bytecode/"
+    "bytecode"
     "charset"
-    "css"
     "lex"
     "parse"
     "select"

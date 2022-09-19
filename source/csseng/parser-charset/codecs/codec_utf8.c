@@ -9,12 +9,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/charset/mibenum.h>
+#include "parser-charset/mibenum.h"
 
-#include "charset/codecs/codec_impl.h"
-#include "charset/encodings/utf8impl.h"
-#include "utils/endian.h"
-#include "utils/utils.h"
+#include "parser-charset/codecs/codec_impl.h"
+#include "parser-charset/encodings/utf8impl.h"
+#include "parser-utils/endian.h"
+#include "parser-utils/utils.h"
 
 /**
  * UTF-8 charset codec

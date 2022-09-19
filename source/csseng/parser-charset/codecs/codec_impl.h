@@ -11,7 +11,7 @@
 #include <stdbool.h>
 #include <inttypes.h>
 
-#include <parserutils/charset/codec.h>
+#include "parser-charset/codec.h"
 
 /**
  * Core charset codec definition; implementations extend this

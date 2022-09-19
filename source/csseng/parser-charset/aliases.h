@@ -10,7 +10,7 @@
 
 #include <inttypes.h>
 
-#include <parserutils/charset/mibenum.h>
+#include "parser-charset/mibenum.h"
 
 typedef struct parserutils_charset_aliases_canon {
 	/* Do not change the ordering here without changing make-aliases.pl */

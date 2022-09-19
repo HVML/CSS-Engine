@@ -13,8 +13,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/charset/utf8.h>
-#include "charset/encodings/utf8impl.h"
+#include "parser-charset/utf8.h"
+#include "parser-charset/encodings/utf8impl.h"
 
 /** Number of continuation bytes for a given start byte */
 const uint8_t numContinuations[256] = {

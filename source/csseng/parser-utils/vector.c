@@ -8,7 +8,7 @@
 #include <inttypes.h>
 #include <string.h>
 
-#include <parserutils/utils/vector.h>
+#include "parser-utils/vector.h"
 
 /**
  * Vector object

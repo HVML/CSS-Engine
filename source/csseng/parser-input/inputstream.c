@@ -9,12 +9,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/charset/mibenum.h>
-#include <parserutils/charset/utf8.h>
-#include <parserutils/input/inputstream.h>
+#include "parser-charset/mibenum.h"
+#include "parser-charset/utf8.h"
+#include "parser-input/inputstream.h"
 
-#include "input/filter.h"
-#include "utils/utils.h"
+#include "parser-input/filter.h"
+#include "parser-utils/utils.h"
 
 /**
  * Private input stream definition

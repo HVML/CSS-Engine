@@ -10,8 +10,7 @@
 
 #include <inttypes.h>
 
-#include <parserutils/errors.h>
-#include <parserutils/functypes.h>
+#include "csseng_parserutils.h"
 
 typedef struct parserutils_filter parserutils_filter;
 

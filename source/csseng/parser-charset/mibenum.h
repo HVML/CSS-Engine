@@ -8,16 +8,14 @@
 #ifndef parserutils_charset_mibenum_h_
 #define parserutils_charset_mibenum_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <inttypes.h>
 #include <stdbool.h>
 
-#include <parserutils/errors.h>
-#include <parserutils/functypes.h>
+#include "csseng_parserutils.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Convert an encoding alias to a MIB enum value */
 uint16_t parserutils_charset_mibenum_from_name(const char *alias, size_t len);

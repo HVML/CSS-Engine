@@ -8,13 +8,11 @@
 #ifndef parserutils_utils_buffer_h_
 #define parserutils_utils_buffer_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+#include "csseng_parserutils.h"
 
-#include <parserutils/errors.h>
-#include <parserutils/functypes.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct parserutils_buffer
 {

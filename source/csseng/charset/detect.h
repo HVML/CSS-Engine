@@ -10,11 +10,10 @@
 
 #include <inttypes.h>
 
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
-#include <libcss/types.h>
-
-#include <parserutils/errors.h>
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_types.h"
+#include "csseng_parserutils.h"
 
 /* Extract a charset from a chunk of data */
 parserutils_error css__charset_extract(const uint8_t *data, size_t len,

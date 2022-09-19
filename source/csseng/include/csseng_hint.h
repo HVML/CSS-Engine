@@ -8,17 +8,16 @@
 #ifndef libcss_hint_h_
 #define libcss_hint_h_
 
+#include "csseng_wapcaplet.h"
+
+#include "csseng_computed.h"
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_types.h"
+
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-
-#include <libwapcaplet/libwapcaplet.h>
-
-#include <libcss/computed.h>
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
-#include <libcss/types.h>
 
 /**
  * Length object for use in presentational hints

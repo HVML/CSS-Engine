@@ -8,8 +8,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include <parserutils/charset/mibenum.h>
-
+#include "parser-charset/mibenum.h"
 #include "charset/detect.h"
 #include "utils/utils.h"
 

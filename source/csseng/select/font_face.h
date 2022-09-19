@@ -9,8 +9,7 @@
 #ifndef css_select_font_face_h_
 #define css_select_font_face_h_
 
-#include <libcss/font_face.h>
-
+#include "csseng_fontface.h"
 
 struct css_font_face_src {
 	lwc_string *location;

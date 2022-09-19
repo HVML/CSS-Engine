@@ -269,6 +269,8 @@ void output_number(FILE *outputf, struct keyval *parseid, struct keyval_list *kv
 
 void output_color(FILE *outputf, struct keyval *parseid, struct keyval_list *kvlist)
 {
+	(void)kvlist;
+
 	fprintf(outputf,
 		"{\n"
 		"\t\tuint16_t value = 0;\n"
@@ -468,7 +470,7 @@ int main(int argc, char **argv)
 {
 	char *descriptor;
 	char *curpos; /* current position in input string */
-	struct keyval *parser_id; /* the parser we are creating output for */
+	// struct keyval *parser_id; /* the parser we are creating output for */
 	FILE *outputf;
 	struct keyval *rkv; /* current read key:val */
 	struct keyval_list *curlist;

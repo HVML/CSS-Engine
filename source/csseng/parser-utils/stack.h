@@ -8,15 +8,13 @@
 #ifndef parserutils_utils_stack_h_
 #define parserutils_utils_stack_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stddef.h>
 
-#include <parserutils/errors.h>
-#include <parserutils/functypes.h>
+#include "csseng_parserutils.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct parserutils_stack;
 typedef struct parserutils_stack parserutils_stack;

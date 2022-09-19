@@ -8,13 +8,12 @@
 #ifndef libcss_fpmath_h_
 #define libcss_fpmath_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stdint.h>
 #include <limits.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* 22:10 fixed point math */
 #define CSS_RADIX_POINT 10

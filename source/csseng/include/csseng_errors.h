@@ -8,12 +8,11 @@
 #ifndef libcss_errors_h_
 #define libcss_errors_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stddef.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef enum css_error {
 	CSS_OK               = 0,

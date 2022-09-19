@@ -61,7 +61,6 @@ css_error css__parse_grid_column_end(css_language *c,
 	int orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
-	bool match;
     css_fixed length = 0;
     uint32_t unit = 0;
 

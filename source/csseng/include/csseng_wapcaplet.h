@@ -9,16 +9,15 @@
 #ifndef libwapcaplet_h_
 #define libwapcaplet_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <sys/types.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <assert.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * The type of a reference counter used in libwapcaplet.

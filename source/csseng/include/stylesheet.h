@@ -1,168 +1,291 @@
 /*
  * This file is part of LibCSS.
  * Licensed under the MIT License,
- *                http://www.opensource.org/licenses/mit-license.php
+ *		  http://www.opensource.org/licenses/mit-license.php
  * Copyright 2008 John-Mark Bell <jmb@netsurf-browser.org>
  */
 
-#ifndef libcss_stylesheet_h_
-#define libcss_stylesheet_h_
+#ifndef css_stylesheet_h_
+#define css_stylesheet_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+#include <inttypes.h>
+#include <stdio.h>
 
-#include <libcss/errors.h>
-#include <libcss/types.h>
-#include <libcss/properties.h>
+#include "csseng_wapcaplet.h"
 
-/**
- * Callback to resolve an URL
- *
- * \param pw    Client data
- * \param dict  String internment context
- * \param base  Base URI (absolute)
- * \param rel   URL to resolve, either absolute or relative to base
- * \param abs   Pointer to location to receive result
- * \return CSS_OK on success, appropriate error otherwise.
- */
-typedef css_error (*css_url_resolution_fn)(void *pw,
-		const char *base, lwc_string *rel, lwc_string **abs);
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_stylesheet.h"
+#include "csseng_types.h"
 
-/**
- * Callback to be notified of the need for an imported stylesheet
- *
- * \param pw      Client data
- * \param parent  Stylesheet requesting the import
- * \param url     URL of the imported sheet
- * \return CSS_OK on success, appropriate error otherwise
- *
- * \note This function will be invoked for notification purposes
- *       only. The client may use this to trigger a parallel fetch
- *       of the imported stylesheet. The imported sheet must be
- *       registered with its parent using the post-parse import
- *       registration API.
- */
-typedef css_error (*css_import_notification_fn)(void *pw,
-		css_stylesheet *parent, lwc_string *url);
+#include "bytecode/bytecode.h"
+#include "parse/parse.h"
+#include "parse/mq.h"
+#include "select/hash.h"
 
-/**
- * Callback use to resolve system colour names to RGB values
- *
- * \param pw     Client data
- * \param name   System colour name
- * \param color  Pointer to location to receive color value
- * \return CSS_OK       on success,
- *         CSS_INVALID  if the name is unknown.
- */
-typedef css_error (*css_color_resolution_fn)(void *pw,
-		lwc_string *name, css_color *color);
+typedef struct css_rule css_rule;
+typedef struct css_selector css_selector;
 
-/** System font callback result data. */
-typedef struct css_system_font {
-	enum css_font_style_e style;
-	enum css_font_variant_e variant;
-	enum css_font_weight_e weight;
+typedef struct css_style {
+	css_code_t *bytecode;	      /**< Pointer to bytecode */
+	uint32_t used;		      /**< number of code entries used */
+	uint32_t allocated;	      /**< number of allocated code entries */
+	struct css_stylesheet *sheet; /**< containing sheet */
+} css_style;
+
+typedef enum css_selector_type {
+	CSS_SELECTOR_ELEMENT,
+	CSS_SELECTOR_CLASS,
+	CSS_SELECTOR_ID,
+	CSS_SELECTOR_PSEUDO_CLASS,
+	CSS_SELECTOR_PSEUDO_ELEMENT,
+	CSS_SELECTOR_ATTRIBUTE,
+	CSS_SELECTOR_ATTRIBUTE_EQUAL,
+	CSS_SELECTOR_ATTRIBUTE_DASHMATCH,
+	CSS_SELECTOR_ATTRIBUTE_INCLUDES,
+	CSS_SELECTOR_ATTRIBUTE_PREFIX,
+	CSS_SELECTOR_ATTRIBUTE_SUFFIX,
+	CSS_SELECTOR_ATTRIBUTE_SUBSTRING
+} css_selector_type;
+
+typedef enum css_combinator {
+	CSS_COMBINATOR_NONE,
+	CSS_COMBINATOR_ANCESTOR,
+	CSS_COMBINATOR_PARENT,
+	CSS_COMBINATOR_SIBLING,
+	CSS_COMBINATOR_GENERIC_SIBLING
+} css_combinator;
+
+typedef enum css_selector_detail_value_type {
+	CSS_SELECTOR_DETAIL_VALUE_STRING,
+	CSS_SELECTOR_DETAIL_VALUE_NTH
+} css_selector_detail_value_type;
+
+typedef union css_selector_detail_value {
+	lwc_string *string;		/**< Interned string, or NULL */
 	struct {
-		css_fixed size;
-		css_unit unit;
-	} size;
-	struct {
-		css_fixed size;
-		css_unit unit;
-	} line_height;
-	/* Note: must be a single family name only */
-	lwc_string *family;
-} css_system_font;
+		int32_t a;
+		int32_t b;
+	} nth;				/**< Data for x = an + b */
+} css_selector_detail_value;
 
-/**
- * Callback use to resolve system font names to font values
- *
- * \param pw           Client data
- * \param name         System font identifier
- * \param system_font  Pointer to system font descriptor to be filled
- * \return CSS_OK       on success,
- *         CSS_INVALID  if the name is unknown.
- */
-typedef css_error (*css_font_resolution_fn)(void *pw,
-		lwc_string *name, css_system_font *system_font);
+typedef struct css_selector_detail {
+	css_qname qname;			/**< Interned name */
+	css_selector_detail_value value;	/**< Detail value */
 
-typedef enum css_stylesheet_params_version {
-	CSS_STYLESHEET_PARAMS_VERSION_1 = 1
-} css_stylesheet_params_version;
+	unsigned int type       : 4,		/**< Type of selector */
+		     comb       : 3,		/**< Type of combinator */
+		     next       : 1,		/**< Another selector detail
+						 * follows */
+		     value_type : 1,		/**< Type of value field */
+		     negate     : 1;		/**< Detail match is inverted */
+} css_selector_detail;
 
-/**
- * Parameter block for css_stylesheet_create()
- */
-typedef struct css_stylesheet_params {
-	/** ABI version of this structure */
-	uint32_t params_version;
+struct css_selector {
+	css_selector *combinator;		/**< Combining selector */
 
-	/** The language level of the stylesheet */
-	css_language_level level;
+	css_rule *rule;				/**< Owning rule */
 
-	/** The charset of the stylesheet data, or NULL to detect */
-	const char *charset;
-	/** URL of stylesheet */
-	const char *url;
-	/** Title of stylesheet */
-	const char *title;
+#define CSS_SPECIFICITY_A 0x01000000
+#define CSS_SPECIFICITY_B 0x00010000
+#define CSS_SPECIFICITY_C 0x00000100
+#define CSS_SPECIFICITY_D 0x00000001
+	uint32_t specificity;			/**< Specificity of selector */
 
-	/** Permit quirky parsing of stylesheet */
-	bool allow_quirks;
-	/** This stylesheet is an inline style */
-	bool inline_style;
+	css_selector_detail data;		/**< Selector data */
+};
 
-	/** URL resolution function */
-	css_url_resolution_fn resolve;
-	/** Client private data for resolve */
-	void *resolve_pw;
+typedef enum css_rule_type {
+	CSS_RULE_UNKNOWN,
+	CSS_RULE_SELECTOR,
+	CSS_RULE_CHARSET,
+	CSS_RULE_IMPORT,
+	CSS_RULE_MEDIA,
+	CSS_RULE_FONT_FACE,
+	CSS_RULE_PAGE
+} css_rule_type;
 
-	/** Import notification function */
-	css_import_notification_fn import;
-	/** Client private data for import */
-	void *import_pw;
+typedef enum css_rule_parent_type {
+	CSS_RULE_PARENT_STYLESHEET,
+	CSS_RULE_PARENT_RULE
+} css_rule_parent_type;
 
-	/** Colour resolution function */
-	css_color_resolution_fn color;
-	/** Client private data for color */
-	void *color_pw;
+struct css_rule {
+	void *parent;				/**< containing rule or owning
+						 * stylesheet (defined by ptype)
+						 */
+	css_rule *next;				/**< next in list */
+	css_rule *prev;				/**< previous in list */
 
-	/** Font resolution function */
+	uint32_t index; /**< index in sheet */
+	uint16_t items; /**< number of items (selectors) in rule */
+	uint8_t type;   /**< css_rule_type */
+	uint8_t ptype;  /**< css_rule_parent_type */
+};
+
+typedef struct css_rule_selector {
+	css_rule base;
+
+	css_selector **selectors;
+	css_style *style;
+} css_rule_selector;
+
+typedef struct css_rule_media {
+	css_rule base;
+
+	css_mq_query *media;
+
+	css_rule *first_child;
+	css_rule *last_child;
+} css_rule_media;
+
+typedef struct css_rule_font_face {
+	css_rule base;
+
+	css_font_face *font_face;
+} css_rule_font_face;
+
+typedef struct css_rule_page {
+	css_rule base;
+
+	css_selector *selector;
+	css_style *style;
+} css_rule_page;
+
+typedef struct css_rule_import {
+	css_rule base;
+
+	lwc_string *url;
+	css_mq_query *media;
+
+	css_stylesheet *sheet;
+} css_rule_import;
+
+typedef struct css_rule_charset {
+	css_rule base;
+
+	lwc_string *encoding;	/** \todo use MIB enum? */
+} css_rule_charset;
+
+struct css_stylesheet {
+	css_selector_hash *selectors;		/**< Hashtable of selectors */
+
+	uint32_t rule_count;			/**< Number of rules in sheet */
+	css_rule *rule_list;			/**< List of rules in sheet */
+	css_rule *last_rule;			/**< Last rule in list */
+
+	bool disabled;				/**< Whether this sheet is
+						 * disabled */
+
+	char *url;				/**< URL of this sheet */
+	char *title;				/**< Title of this sheet */
+
+	css_language_level level;		/**< Language level of sheet */
+	css_parser *parser;			/**< Core parser for sheet */
+	void *parser_frontend;			/**< Frontend parser */
+	lwc_string **propstrings;		/**< Property strings, for parser */
+
+	bool quirks_allowed;			/**< Quirks permitted */
+	bool quirks_used;			/**< Quirks actually used */
+
+	bool inline_style;			/**< Is an inline style */
+
+	size_t size;				/**< Size, in bytes */
+
+	css_import_notification_fn import;	/**< Import notification function */
+	void *import_pw;			/**< Private word */
+
+	css_url_resolution_fn resolve;		/**< URL resolution function */
+	void *resolve_pw;			/**< Private word */
+
+	css_color_resolution_fn color;		/**< Colour resolution function */
+	void *color_pw;				/**< Private word */
+
+	/** System font resolution function */
 	css_font_resolution_fn font;
-	/** Client private data for font */
-	void *font_pw;
-} css_stylesheet_params;
+	void *font_pw;				/**< Private word */
 
-css_error css_stylesheet_create(const css_stylesheet_params *params,
-		css_stylesheet **stylesheet);
-css_error css_stylesheet_destroy(css_stylesheet *sheet);
+	css_style *cached_style;		/**< Cache for style parsing */
 
-css_error css_stylesheet_append_data(css_stylesheet *sheet,
-		const uint8_t *data, size_t len);
-css_error css_stylesheet_data_done(css_stylesheet *sheet);
+	lwc_string **string_vector;             /**< Bytecode string vector */
+	uint32_t string_vector_l;               /**< The string vector allocated
+						 * length in entries */
+	uint32_t string_vector_c;               /**< The number of string
+						 * vector entries used */
+};
 
-css_error css_stylesheet_next_pending_import(css_stylesheet *parent,
-		lwc_string **url);
-css_error css_stylesheet_register_import(css_stylesheet *parent,
-		css_stylesheet *child);
+css_error css__stylesheet_style_create(css_stylesheet *sheet,
+		css_style **style);
+css_error css__stylesheet_style_append(css_style *style, css_code_t code);
+css_error css__stylesheet_style_vappend(css_style *style, uint32_t style_count,
+		...);
+css_error css__stylesheet_style_destroy(css_style *style);
+css_error css__stylesheet_merge_style(css_style *target, css_style *style);
 
-css_error css_stylesheet_get_language_level(css_stylesheet *sheet,
-		css_language_level *level);
-css_error css_stylesheet_get_url(css_stylesheet *sheet, const char **url);
-css_error css_stylesheet_get_title(css_stylesheet *sheet, const char **title);
-css_error css_stylesheet_quirks_allowed(css_stylesheet *sheet, bool *allowed);
-css_error css_stylesheet_used_quirks(css_stylesheet *sheet, bool *quirks);
-
-css_error css_stylesheet_get_disabled(css_stylesheet *sheet, bool *disabled);
-css_error css_stylesheet_set_disabled(css_stylesheet *sheet, bool disabled);
-
-css_error css_stylesheet_size(css_stylesheet *sheet, size_t *size);
-
-#ifdef __cplusplus
+/** Helper function to avoid distinct buildOPV call */
+static inline css_error css__stylesheet_style_appendOPV(css_style *style,
+		opcode_t opcode, uint8_t flags, uint16_t value)
+{
+	return css__stylesheet_style_append(style,
+			buildOPV(opcode, flags, value));
 }
-#endif
+
+/** Helper function to set inherit flag */
+static inline css_error css_stylesheet_style_inherit(css_style *style,
+		opcode_t opcode)
+{
+	return css__stylesheet_style_append(style,
+			buildOPV(opcode, FLAG_INHERIT, 0));
+}
+
+css_error css__stylesheet_selector_create(css_stylesheet *sheet,
+		css_qname *qname, css_selector **selector);
+css_error css__stylesheet_selector_destroy(css_stylesheet *sheet,
+		css_selector *selector);
+
+css_error css__stylesheet_selector_detail_init(css_stylesheet *sheet,
+		css_selector_type type, css_qname *qname,
+		css_selector_detail_value value,
+		css_selector_detail_value_type value_type,
+		bool negate, css_selector_detail *detail);
+
+css_error css__stylesheet_selector_append_specific(css_stylesheet *sheet,
+		css_selector **parent, const css_selector_detail *specific);
+
+css_error css__stylesheet_selector_combine(css_stylesheet *sheet,
+		css_combinator type, css_selector *a, css_selector *b);
+
+css_error css__stylesheet_rule_create(css_stylesheet *sheet, css_rule_type type,
+		css_rule **rule);
+css_error css__stylesheet_rule_destroy(css_stylesheet *sheet, css_rule *rule);
+
+css_error css__stylesheet_rule_add_selector(css_stylesheet *sheet,
+		css_rule *rule, css_selector *selector);
+
+css_error css__stylesheet_rule_append_style(css_stylesheet *sheet,
+		css_rule *rule, css_style *style);
+
+css_error css__stylesheet_rule_set_charset(css_stylesheet *sheet,
+		css_rule *rule, lwc_string *charset);
+
+css_error css__stylesheet_rule_set_nascent_import(css_stylesheet *sheet,
+		css_rule *rule, lwc_string *url, css_mq_query *media);
+
+css_error css__stylesheet_rule_set_media(css_stylesheet *sheet,
+		css_rule *rule, css_mq_query *media);
+
+css_error css__stylesheet_rule_set_page_selector(css_stylesheet *sheet,
+		css_rule *rule, css_selector *sel);
+
+css_error css__stylesheet_add_rule(css_stylesheet *sheet, css_rule *rule,
+		css_rule *parent);
+css_error css__stylesheet_remove_rule(css_stylesheet *sheet, css_rule *rule);
+
+css_error css__stylesheet_string_get(css_stylesheet *sheet,
+		uint32_t string_number, lwc_string **string);
+
+css_error css__stylesheet_string_add(css_stylesheet *sheet,
+		lwc_string *string, uint32_t *string_number);
 
 #endif
 

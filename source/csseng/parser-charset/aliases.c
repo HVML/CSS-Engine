@@ -14,8 +14,8 @@
 
 #include <assert.h>
 
-#include "charset/aliases.h"
-#include "utils/utils.h"
+#include "parser-utils/utils.h"
+#include "aliases.h"
 
 /* Bring in the aliases tables */
 #include "aliases.inc"

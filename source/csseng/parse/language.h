@@ -8,11 +8,11 @@
 #ifndef css_css__parse_language_h_
 #define css_css__parse_language_h_
 
-#include <parserutils/utils/stack.h>
-#include <parserutils/utils/vector.h>
+#include "parser-utils/stack.h"
+#include "parser-utils/vector.h"
 
-#include <libcss/functypes.h>
-#include <libcss/types.h>
+#include "csseng_functypes.h"
+#include "csseng_types.h"
 
 #include "lex/lex.h"
 #include "parse/parse.h"

@@ -9,17 +9,15 @@
 #ifndef libcss_font_face_h_
 #define libcss_font_face_h_
 
+#include "csseng_wapcaplet.h"
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_properties.h"
+#include "csseng_types.h"
+
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-
-#include <libwapcaplet/libwapcaplet.h>
-
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
-#include <libcss/properties.h>
-#include <libcss/types.h>
 
 typedef enum css_font_face_format {
 	CSS_FONT_FACE_FORMAT_UNSPECIFIED 	= 0x00,

@@ -9,7 +9,7 @@
 #ifndef css_parse_font_face_h_
 #define css_parse_font_face_h_
 
-#include <parserutils/utils/vector.h>
+#include "parser-utils/vector.h"
 
 #include "stylesheet.h"
 #include "lex/lex.h"

@@ -8,18 +8,17 @@
 #ifndef libcss_types_h_
 #define libcss_types_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 
-#include <libwapcaplet/libwapcaplet.h>
+#include "csseng_wapcaplet.h"
+#include "csseng_fpmath.h"
 
-#include <libcss/fpmath.h>
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 /**
  * Source of charset information, in order of importance.

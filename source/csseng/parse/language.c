@@ -8,7 +8,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include <parserutils/utils/stack.h>
+#include "parser-utils/stack.h"
 
 #include "stylesheet.h"
 #include "lex/lex.h"

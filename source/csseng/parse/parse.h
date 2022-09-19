@@ -8,13 +8,12 @@
 #ifndef css_css__parse_parse_h_
 #define css_css__parse_parse_h_
 
-#include <libwapcaplet/libwapcaplet.h>
+#include "csseng_wapcaplet.h"
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_types.h"
 
-#include <parserutils/utils/vector.h>
-
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
-#include <libcss/types.h>
+#include "parser-utils/vector.h"
 
 typedef struct css_parser css_parser;
 

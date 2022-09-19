@@ -8,16 +8,15 @@
 #ifndef libcss_select_h_
 #define libcss_select_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
+#include "csseng_hint.h"
+#include "csseng_types.h"
+#include "csseng_computed.h"
 
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
-#include <libcss/hint.h>
-#include <libcss/types.h>
-#include <libcss/computed.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef enum css_pseudo_element {
 	CSS_PSEUDO_ELEMENT_NONE         = 0,

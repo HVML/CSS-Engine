@@ -9,11 +9,11 @@
 #include <ctype.h>
 #include <stdbool.h>
 
-#include <libwapcaplet/libwapcaplet.h>
+#include "csseng_wapcaplet.h"
 
-#include <parserutils/input/inputstream.h>
-#include <parserutils/utils/stack.h>
-#include <parserutils/utils/vector.h>
+#include "parser-input/inputstream.h"
+#include "parser-utils/stack.h"
+#include "parser-utils/vector.h"
 
 #include "charset/detect.h"
 #include "lex/lex.h"

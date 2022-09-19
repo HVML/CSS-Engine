@@ -8,15 +8,13 @@
 #ifndef parserutils_charset_codec_h_
 #define parserutils_charset_codec_h_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <inttypes.h>
 
-#include <parserutils/errors.h>
-#include <parserutils/functypes.h>
+#include "csseng_parserutils.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct parserutils_charset_codec parserutils_charset_codec;
 

@@ -8,10 +8,9 @@
 #ifndef css_utils_h_
 #define css_utils_h_
 
-#include <libwapcaplet/libwapcaplet.h>
-
-#include <libcss/types.h>
-#include <libcss/errors.h>
+#include "csseng_wapcaplet.h"
+#include "csseng_types.h"
+#include "csseng_errors.h"
 
 #ifndef max
 #define max(a,b) ((a)>(b)?(a):(b))

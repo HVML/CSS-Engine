@@ -8,7 +8,7 @@
 #ifndef css_parse_mq_h_
 #define css_parse_mq_h_
 
-#include <parserutils/utils/vector.h>
+#include "parser-utils/vector.h"
 #include "parse/language.h"
 
 typedef struct {

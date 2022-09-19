@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/charset/utf16.h>
+#include "parser-charset/utf16.h"
 
 /**
  * Convert a UTF-16 sequence into a single UCS-4 character

@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-#include <libcss/errors.h>
+#include "csseng_errors.h"
 
 /**
  * Convert a LibCSS error code to a string

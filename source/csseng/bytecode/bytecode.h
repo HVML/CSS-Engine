@@ -11,8 +11,8 @@
 #include <inttypes.h>
 #include <stdio.h>
 
-#include <libcss/types.h>
-#include <libcss/properties.h>
+#include "csseng_types.h"
+#include "csseng_properties.h"
 
 typedef uint32_t css_code_t;
 

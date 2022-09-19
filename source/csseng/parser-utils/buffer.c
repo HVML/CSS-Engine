@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-#include <parserutils/utils/buffer.h>
+#include "parser-utils/buffer.h"
 
 #define DEFAULT_SIZE (4096)
 

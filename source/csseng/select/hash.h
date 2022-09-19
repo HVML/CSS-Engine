@@ -8,10 +8,10 @@
 #ifndef css_select_hash_h_
 #define css_select_hash_h_
 
-#include <libwapcaplet/libwapcaplet.h>
+#include "csseng_wapcaplet.h"
 
-#include <libcss/errors.h>
-#include <libcss/functypes.h>
+#include "csseng_errors.h"
+#include "csseng_functypes.h"
 
 #include "select/bloom.h"
 

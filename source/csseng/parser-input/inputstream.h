@@ -20,11 +20,9 @@ extern "C"
 #include <stdlib.h>
 #include <inttypes.h>
 
-#include <parserutils/errors.h>
-#include <parserutils/functypes.h>
-#include <parserutils/types.h>
-#include <parserutils/charset/utf8.h>
-#include <parserutils/utils/buffer.h>
+#include "csseng_parserutils.h"
+#include "parser-charset/utf8.h"
+#include "parser-utils/buffer.h"
 
 /**
  * Type of charset detection function
