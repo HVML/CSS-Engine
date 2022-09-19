@@ -13,18 +13,18 @@ set(CSSEng_PRIVATE_INCLUDE_DIRECTORIES
 
 # TODO: List the headers should be installed to system here.
 set(CSSEng_INSTALLED_HEADERS
-    "${CSSENG_DIR}/include/computed.h"
-    "${CSSENG_DIR}/include/errors.h"
-    "${CSSENG_DIR}/include/font_face.h"
-    "${CSSENG_DIR}/include/fpmath.h"
-    "${CSSENG_DIR}/include/functypes.h"
-    "${CSSENG_DIR}/include/hint.h"
-    "${CSSENG_DIR}/include/parserutils.h"
-    "${CSSENG_DIR}/include/properties.h"
-    "${CSSENG_DIR}/include/select.h"
-    "${CSSENG_DIR}/include/stylesheet.h"
-    "${CSSENG_DIR}/include/types.h"
-    "${CSSENG_DIR}/include/wapcaplet.h"
+    "${CSSENG_DIR}/include/csseng_computed.h"
+    "${CSSENG_DIR}/include/csseng_errors.h"
+    "${CSSENG_DIR}/include/csseng_fontface.h"
+    "${CSSENG_DIR}/include/csseng_fpmath.h"
+    "${CSSENG_DIR}/include/csseng_functypes.h"
+    "${CSSENG_DIR}/include/csseng_hint.h"
+    "${CSSENG_DIR}/include/csseng_parserutils.h"
+    "${CSSENG_DIR}/include/csseng_properties.h"
+    "${CSSENG_DIR}/include/csseng_select.h"
+    "${CSSENG_DIR}/include/csseng_stylesheet.h"
+    "${CSSENG_DIR}/include/csseng_types.h"
+    "${CSSENG_DIR}/include/csseng_wapcaplet.h"
     "${CSSENG_DIR}/include/csseng.h"
 )
 
