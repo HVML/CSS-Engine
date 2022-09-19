@@ -1,22 +1,22 @@
 # The static runtime used to be required for AppleWin due to
-# FooBarSystemInterface.lib being compiled with a static runtime. That library
+# CSSEngSystemInterface.lib being compiled with a static runtime. That library
 # is no longer used, but we keep building with static runtime for backward
 # compatibility. But if someone decides that it's OK to require existing
 # projects to build with the runtime DLLs, that's now technically possible.
 set(MSVC_STATIC_RUNTIME ON)
 
 if (DEFINED ENV{AppleApplicationSupportSDK})
-    file(TO_CMAKE_PATH "$ENV{AppleApplicationSupportSDK}/AppleInternal" FOOBAR_LIBRARIES_DIR)
-    set(FOOBAR_LIBRARIES_INCLUDE_DIR "${FOOBAR_LIBRARIES_DIR}/include")
-    include_directories(${FOOBAR_LIBRARIES_INCLUDE_DIR})
+    file(TO_CMAKE_PATH "$ENV{AppleApplicationSupportSDK}/AppleInternal" CSSENG_LIBRARIES_DIR)
+    set(CSSENG_LIBRARIES_INCLUDE_DIR "${CSSENG_LIBRARIES_DIR}/include")
+    include_directories(${CSSENG_LIBRARIES_INCLUDE_DIR})
     set(APPLE_BUILD 1)
 endif ()
 
-if (NOT FOOBAR_LIBRARIES_DIR)
-    if (DEFINED ENV{FOOBAR_LIBRARIES})
-        file(TO_CMAKE_PATH "$ENV{FOOBAR_LIBRARIES}" FOOBAR_LIBRARIES_DIR)
+if (NOT CSSENG_LIBRARIES_DIR)
+    if (DEFINED ENV{CSSENG_LIBRARIES})
+        file(TO_CMAKE_PATH "$ENV{CSSENG_LIBRARIES}" CSSENG_LIBRARIES_DIR)
     else ()
-        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/FooBarLibraries/win" FOOBAR_LIBRARIES_DIR)
+        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/CSSEngLibraries/win" CSSENG_LIBRARIES_DIR)
     endif ()
 endif ()
 
@@ -47,26 +47,26 @@ else ()
     SET_AND_EXPOSE_TO_BUILD(USE_CA ON)
     SET_AND_EXPOSE_TO_BUILD(USE_CG ON)
 
-    set(CMAKE_REQUIRED_INCLUDES ${FOOBAR_LIBRARIES_INCLUDE_DIR})
+    set(CMAKE_REQUIRED_INCLUDES ${CSSENG_LIBRARIES_INCLUDE_DIR})
     set(CMAKE_REQUIRED_LIBRARIES
-        "${FOOBAR_LIBRARIES_LINK_DIR}/CoreFoundation${DEBUG_SUFFIX}.lib"
-        "${FOOBAR_LIBRARIES_LINK_DIR}/AVFoundationCF${DEBUG_SUFFIX}.lib"
-        "${FOOBAR_LIBRARIES_LINK_DIR}/QuartzCore${DEBUG_SUFFIX}.lib"
-        "${FOOBAR_LIBRARIES_LINK_DIR}/libdispatch${DEBUG_SUFFIX}.lib"
+        "${CSSENG_LIBRARIES_LINK_DIR}/CoreFoundation${DEBUG_SUFFIX}.lib"
+        "${CSSENG_LIBRARIES_LINK_DIR}/AVFoundationCF${DEBUG_SUFFIX}.lib"
+        "${CSSENG_LIBRARIES_LINK_DIR}/QuartzCore${DEBUG_SUFFIX}.lib"
+        "${CSSENG_LIBRARIES_LINK_DIR}/libdispatch${DEBUG_SUFFIX}.lib"
     )
 
-    FOOBAR_CHECK_HAVE_INCLUDE(HAVE_AVCF AVFoundationCF/AVCFBase.h)
+    CSSENG_CHECK_HAVE_INCLUDE(HAVE_AVCF AVFoundationCF/AVCFBase.h)
 
     if (HAVE_AVCF)
          SET_AND_EXPOSE_TO_BUILD(USE_AVFOUNDATION ON)
     endif ()
 
-    FOOBAR_CHECK_HAVE_SYMBOL(HAVE_AVCF_LEGIBLE_OUTPUT AVCFPlayerItemLegibleOutputSetCallbacks "TargetConditionals.h;dispatch/dispatch.h;AVFoundationCF/AVFoundationCF.h;AVFoundationCF/AVCFPlayerItemLegibleOutput.h")
-    FOOBAR_CHECK_HAVE_SYMBOL(HAVE_AVFOUNDATION_LOADER_DELEGATE AVCFAssetResourceLoaderSetCallbacks "TargetConditionals.h;dispatch/dispatch.h;AVFoundationCF/AVFoundationCF.h")
-    FOOBAR_CHECK_HAVE_SYMBOL(HAVE_AVCFURL_PLAYABLE_MIMETYPE AVCFURLAssetIsPlayableExtendedMIMEType "TargetConditionals.h;dispatch/dispatch.h;AVFoundationCF/AVFoundationCF.h")
+    CSSENG_CHECK_HAVE_SYMBOL(HAVE_AVCF_LEGIBLE_OUTPUT AVCFPlayerItemLegibleOutputSetCallbacks "TargetConditionals.h;dispatch/dispatch.h;AVFoundationCF/AVFoundationCF.h;AVFoundationCF/AVCFPlayerItemLegibleOutput.h")
+    CSSENG_CHECK_HAVE_SYMBOL(HAVE_AVFOUNDATION_LOADER_DELEGATE AVCFAssetResourceLoaderSetCallbacks "TargetConditionals.h;dispatch/dispatch.h;AVFoundationCF/AVFoundationCF.h")
+    CSSENG_CHECK_HAVE_SYMBOL(HAVE_AVCFURL_PLAYABLE_MIMETYPE AVCFURLAssetIsPlayableExtendedMIMEType "TargetConditionals.h;dispatch/dispatch.h;AVFoundationCF/AVFoundationCF.h")
 
     # CMake cannot identify an enum through a symbol check so a source file is required
-    FOOBAR_CHECK_SOURCE_COMPILES(HAVE_AVCFPLAYERITEM_CALLBACK_VERSION_2 "
+    CSSENG_CHECK_SOURCE_COMPILES(HAVE_AVCFPLAYERITEM_CALLBACK_VERSION_2 "
     #include <AVFoundationCF/AVFoundationCF.h>
     #include <AVFoundationCF/AVCFPlayerItemLegibleOutput.h>
     #include <CoreFoundation/CoreFoundation.h>
@@ -87,7 +87,7 @@ else ()
         SET_AND_EXPOSE_TO_BUILD(HAVE_MEDIA_ACCESSIBILITY_FRAMEWORK ON)
     endif ()
 
-    FOOBAR_CHECK_HAVE_SYMBOL(HAVE_CACFLAYER_SETCONTENTSSCALE CACFLayerSetContentsScale QuartzCore/CoreAnimationCF.h)
+    CSSENG_CHECK_HAVE_SYMBOL(HAVE_CACFLAYER_SETCONTENTSSCALE CACFLayerSetContentsScale QuartzCore/CoreAnimationCF.h)
 endif ()
 
 # Warnings as errors (ignore narrowing conversions)

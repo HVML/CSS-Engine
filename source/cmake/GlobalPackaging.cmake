@@ -1,24 +1,24 @@
 # -----------------------------------------------------------------------------
-# This file defines the basics of CPack behavior for FooBar
+# This file defines the basics of CPack behavior for CSSEng
 #
 # The following CPack variables will be defined if they were unset:
-#   - CPACK_PACKAGE_NAME to FooBar-${PORT}
+#   - CPACK_PACKAGE_NAME to CSSEng-${PORT}
 #   - CPACK_SOURCE_IGNORE_FILES to a known pattern of good files
 #
 # The following variables affect the behavior of packaging:
-#   - FOOBAR_CPACK_ALL_PORTS if defined and true, will not limit packaging
+#   - CSSENG_CPACK_ALL_PORTS if defined and true, will not limit packaging
 #     to just include files of the port (affects CPACK_SOURCE_IGNORE_FILES,
 #     just if this variable was not defined before).
-#   - FOOBAR_CPACK_ADD_TESTS if defined and true, will also add tests
+#   - CSSENG_CPACK_ADD_TESTS if defined and true, will also add tests
 #     (affects CPACK_SOURCE_IGNORE_FILES, just if this variable was
 #     not defined before)
-#   - FOOBAR_CPACK_ADD_TOOLS if defined and true, will also add tools
+#   - CSSENG_CPACK_ADD_TOOLS if defined and true, will also add tools
 #     (affects CPACK_SOURCE_IGNORE_FILES, just if this variable was
 #     not defined before)
 # -----------------------------------------------------------------------------
 
 if (NOT DEFINED CPACK_PACKAGE_NAME)
-    set(CPACK_PACKAGE_NAME FooBar-${PORT})
+    set(CPACK_PACKAGE_NAME CSSEng-${PORT})
 endif ()
 
 if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
@@ -63,29 +63,29 @@ if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
         "\\\\.pyo$"
         "/cmake-build/"
         "/build/"
-        "/FooBarBuild/"
+        "/CSSEngBuild/"
         "/Tools/Scripts/webkitpy/thirdparty/autoinstalled/"
         )
 
-    if (NOT FOOBAR_CPACK_ADD_TESTS)
+    if (NOT CSSENG_CPACK_ADD_TESTS)
         list(APPEND CPACK_SOURCE_IGNORE_FILES
           "/LayoutTests/"
           "/ManualTests/"
           "/tests/"
           )
-    endif (NOT FOOBAR_CPACK_ADD_TESTS)
+    endif (NOT CSSENG_CPACK_ADD_TESTS)
 
-    if (NOT FOOBAR_CPACK_ADD_TOOLS)
+    if (NOT CSSENG_CPACK_ADD_TOOLS)
         list(APPEND CPACK_SOURCE_IGNORE_FILES
         "/Tools/"
         "/manual-tools/"
         "/tools/"
         "/PageLoadTools/"
         )
-    endif (NOT FOOBAR_CPACK_ADD_TOOLS)
+    endif (NOT CSSENG_CPACK_ADD_TOOLS)
 
 
-    if (NOT FOOBAR_CPACK_ALL_PORTS)
+    if (NOT CSSENG_CPACK_ALL_PORTS)
         # File and Directory patterns that no CMake-ified port uses
         set(FILE_PATTERNS_UNKNOWN_PORTS
             "/carbon/" "/Carbon/" "carbon\\\\." "Carbon\\\\."
@@ -108,7 +108,7 @@ if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
             "/qt4/" "/Qt4/" "qt4\\\\." "Qt4\\\\."
             "/win/" "/Win/" "win\\\\." "Win\\\\."
             "/wxcode/" "/Wxcode/" "wxcode\\\\." "Wxcode\\\\."
-            "/FooBarLibraries/"
+            "/CSSEngLibraries/"
             "/English\\\\.lproj/"
             "\\\\.a$"
             "\\\\.exe$"
@@ -140,7 +140,7 @@ if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
             endif ()
         endforeach ()
 
-    endif (NOT FOOBAR_CPACK_ALL_PORTS)
+    endif (NOT CSSENG_CPACK_ALL_PORTS)
 
 endif (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
 

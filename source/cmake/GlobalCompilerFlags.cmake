@@ -1,6 +1,6 @@
 # Prepends flags to CMAKE_C_FLAGS if supported by the C compiler. Almost all
 # flags should be prepended to allow the user to override them.
-macro(FOOBAR_PREPEND_GLOBAL_C_FLAGS)
+macro(CSSENG_PREPEND_GLOBAL_C_FLAGS)
     foreach (_flag ${ARGN})
         check_c_compiler_flag("${_flag}" C_COMPILER_SUPPORTS_${_flag})
         if (C_COMPILER_SUPPORTS_${_flag})
@@ -12,7 +12,7 @@ endmacro()
 # Appends flags to CMAKE_C_FLAGS if supported by the C compiler. This macro
 # should be used sparingly. Only append flags if the user must not be allowed to
 # override them.
-macro(FOOBAR_APPEND_GLOBAL_C_FLAGS)
+macro(CSSENG_APPEND_GLOBAL_C_FLAGS)
     foreach (_flag ${ARGN})
         check_c_compiler_flag("${_flag}" C_COMPILER_SUPPORTS_${_flag})
         if (C_COMPILER_SUPPORTS_${_flag})
@@ -23,7 +23,7 @@ endmacro()
 
 # Prepends flags to CMAKE_CXX_FLAGS if supported by the C++ compiler. Almost all
 # flags should be prepended to allow the user to override them.
-macro(FOOBAR_PREPEND_GLOBAL_CXX_FLAGS)
+macro(CSSENG_PREPEND_GLOBAL_CXX_FLAGS)
     foreach (_flag ${ARGN})
         check_cxx_compiler_flag("${_flag}" CXX_COMPILER_SUPPORTS_${_flag})
         if (CXX_COMPILER_SUPPORTS_${_flag})
@@ -35,7 +35,7 @@ endmacro()
 # Appends flags to CMAKE_CXX_FLAGS if supported by the C++ compiler. This macro
 # should be used sparingly. Only append flags if the user must not be allowed to
 # override them.
-macro(FOOBAR_APPEND_GLOBAL_CXX_FLAGS)
+macro(CSSENG_APPEND_GLOBAL_CXX_FLAGS)
     foreach (_flag ${ARGN})
         check_cxx_compiler_flag("${_flag}" CXX_COMPILER_SUPPORTS_${_flag})
         if (CXX_COMPILER_SUPPORTS_${_flag})
@@ -47,24 +47,24 @@ endmacro()
 # Prepends flags to CMAKE_C_FLAGS and CMAKE_CXX_FLAGS if supported by the C
 # or C++ compiler, respectively. Almost all flags should be prepended to allow
 # the user to override them.
-macro(FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS)
-    FOOBAR_PREPEND_GLOBAL_C_FLAGS(${ARGN})
-    FOOBAR_PREPEND_GLOBAL_CXX_FLAGS(${ARGN})
+macro(CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS)
+    CSSENG_PREPEND_GLOBAL_C_FLAGS(${ARGN})
+    CSSENG_PREPEND_GLOBAL_CXX_FLAGS(${ARGN})
 endmacro()
 
 # Appends flags to CMAKE_C_FLAGS and CMAKE_CXX_FLAGS if supported by the C or
 # C++ compiler, respectively. This macro should be used sparingly. Only append
 # flags if the user must not be allowed to override them.
-macro(FOOBAR_APPEND_GLOBAL_COMPILER_FLAGS)
-    FOOBAR_APPEND_GLOBAL_C_FLAGS(${ARGN})
-    FOOBAR_APPEND_GLOBAL_CXX_FLAGS(${ARGN})
+macro(CSSENG_APPEND_GLOBAL_COMPILER_FLAGS)
+    CSSENG_APPEND_GLOBAL_C_FLAGS(${ARGN})
+    CSSENG_APPEND_GLOBAL_CXX_FLAGS(${ARGN})
 endmacro()
 
 # Appends flags to COMPILE_FLAGS of _target if supported by the C compiler.
 # Note that it is simply not possible to pass different C and C++ flags, unless
 # we drop support for the Visual Studio backend and use the COMPILE_LANGUAGE
 # generator expression. This is a very serious limitation.
-macro(FOOBAR_ADD_TARGET_C_FLAGS _target)
+macro(CSSENG_ADD_TARGET_C_FLAGS _target)
     foreach (_flag ${ARGN})
         check_c_compiler_flag("${_flag}" C_COMPILER_SUPPORTS_${_flag})
         if (C_COMPILER_SUPPORTS_${_flag})
@@ -77,7 +77,7 @@ endmacro()
 # Note that it is simply not possible to pass different C and C++ flags, unless
 # we drop support for the Visual Studio backend and use the COMPILE_LANGUAGE
 # generator expression. This is a very serious limitation.
-macro(FOOBAR_ADD_TARGET_CXX_FLAGS _target)
+macro(CSSENG_ADD_TARGET_CXX_FLAGS _target)
     foreach (_flag ${ARGN})
         check_cxx_compiler_flag("${_flag}" CXX_COMPILER_SUPPORTS_${_flag})
         if (CXX_COMPILER_SUPPORTS_${_flag})
@@ -88,31 +88,31 @@ endmacro()
 
 
 if (COMPILER_IS_GCC_OR_CLANG)
-    FOOBAR_APPEND_GLOBAL_COMPILER_FLAGS(-fno-strict-aliasing)
+    CSSENG_APPEND_GLOBAL_COMPILER_FLAGS(-fno-strict-aliasing)
 
     # clang-cl.exe impersonates cl.exe so some clang arguments like -fno-rtti are
     # represented using cl.exe's options and should not be passed as flags, so
     # we do not add -fno-rtti or -fno-exceptions for clang-cl
     if (COMPILER_IS_CLANG_CL)
         # FIXME: These warnings should be addressed
-        FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-undef
+        CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-undef
                                              -Wno-macro-redefined
                                              -Wno-unknown-pragmas
                                              -Wno-nonportable-include-path
                                              -Wno-unknown-argument)
     else ()
-        FOOBAR_APPEND_GLOBAL_COMPILER_FLAGS(-fno-exceptions)
-        FOOBAR_APPEND_GLOBAL_CXX_FLAGS(-fno-rtti)
+        CSSENG_APPEND_GLOBAL_COMPILER_FLAGS(-fno-exceptions)
+        CSSENG_APPEND_GLOBAL_CXX_FLAGS(-fno-rtti)
 
         if (WIN32)
-            FOOBAR_APPEND_GLOBAL_COMPILER_FLAGS(-mno-ms-bitfields)
-            FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-unknown-pragmas)
+            CSSENG_APPEND_GLOBAL_COMPILER_FLAGS(-mno-ms-bitfields)
+            CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-unknown-pragmas)
             add_definitions(-D__USE_MINGW_ANSI_STDIO=1)
         endif ()
     endif ()
 
     # Warnings to be enabled
-    FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-Wcast-align
+    CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-Wcast-align
                                          -Wformat-security
                                          -Wmissing-format-attribute
                                          -Wpointer-arith
@@ -121,30 +121,30 @@ if (COMPILER_IS_GCC_OR_CLANG)
 
     # Warnings to be disabled
     # FIXME: We should probably not be disabling -Wno-maybe-uninitialized?
-    FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-Qunused-arguments
+    CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-Qunused-arguments
                                          -Wno-maybe-uninitialized
                                          -Wno-parentheses-equality
                                          -Wno-psabi)
 
-    FOOBAR_PREPEND_GLOBAL_CXX_FLAGS(-Wno-noexcept-type)
+    CSSENG_PREPEND_GLOBAL_CXX_FLAGS(-Wno-noexcept-type)
 
     # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=80947
     if (${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS "8.0" AND NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        FOOBAR_PREPEND_GLOBAL_CXX_FLAGS(-Wno-attributes)
+        CSSENG_PREPEND_GLOBAL_CXX_FLAGS(-Wno-attributes)
     endif ()
 
     # -Wexpansion-to-defined produces false positives with GCC but not Clang
     # https://bugs.webkit.org/show_bug.cgi?id=167643#c13
     if (CMAKE_COMPILER_IS_GNUCXX)
-        FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-expansion-to-defined)
+        CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-expansion-to-defined)
     endif ()
 
     # Force SSE2 fp on x86 builds.
     if (WTF_CPU_X86 AND NOT CMAKE_CROSSCOMPILING)
-        FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-msse2 -mfpmath=sse)
+        CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-msse2 -mfpmath=sse)
         include(DetectSSE2)
         if (NOT SSE2_SUPPORT_FOUND)
-            message(FATAL_ERROR "SSE2 support is required to compile FooBar")
+            message(FATAL_ERROR "SSE2 support is required to compile CSSEng")
         endif ()
     endif ()
 endif ()
@@ -152,14 +152,14 @@ endif ()
 if (COMPILER_IS_GCC_OR_CLANG AND NOT MSVC)
     # Don't give -Wall to clang-cl because clang-cl treats /Wall and -Wall as -Weverything.
     # -Wall and -Wextra should be specified before -Wno-* for Clang.
-    FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-Wall -Wextra -fmax-errors=10)
+    CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-Wall -Wextra -fmax-errors=10)
     set(CMAKE_C_FLAGS "-Werror ${CMAKE_C_FLAGS}")
     set(CMAKE_CXX_FLAGS "-Werror ${CMAKE_CXX_FLAGS}")
 endif ()
 
 # Ninja tricks compilers into turning off color support.
 if (CMAKE_GENERATOR STREQUAL "Ninja")
-    FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS(-fcolor-diagnostics
+    CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS(-fcolor-diagnostics
                                          -fdiagnostics-color=always)
 endif ()
 
@@ -195,12 +195,12 @@ if (COMPILER_IS_GCC_OR_CLANG)
 
         foreach (SANITIZER ${ENABLE_SANITIZERS})
             if (${SANITIZER} MATCHES "address")
-                FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS("-fno-omit-frame-pointer -fno-optimize-sibling-calls")
+                CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS("-fno-omit-frame-pointer -fno-optimize-sibling-calls")
                 set(SANITIZER_COMPILER_FLAGS "-fsanitize=address ${SANITIZER_COMPILER_FLAGS}")
                 set(SANITIZER_LINK_FLAGS "-fsanitize=address ${SANITIZER_LINK_FLAGS}")
 
             elseif (${SANITIZER} MATCHES "undefined")
-                FOOBAR_PREPEND_GLOBAL_COMPILER_FLAGS("-fno-omit-frame-pointer -fno-optimize-sibling-calls")
+                CSSENG_PREPEND_GLOBAL_COMPILER_FLAGS("-fno-omit-frame-pointer -fno-optimize-sibling-calls")
                 # -fsanitize=vptr is incompatible with -fno-rtti
                 set(SANITIZER_COMPILER_FLAGS "-fsanitize=undefined -frtti ${SANITIZER_COMPILER_FLAGS}")
                 set(SANITIZER_LINK_FLAGS "-fsanitize=undefined ${SANITIZER_LINK_FLAGS}")

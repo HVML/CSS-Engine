@@ -1,56 +1,26 @@
-LibCSS -- a CSS parser and selection engine
-===========================================
+CSSEngine -- a CSS parser and selection engine
+===============================================
 
 Overview
 --------
 
-  LibCSS is a CSS parser and selection engine. It aims to parse the forward
-  compatible CSS grammar.
+CSSEngine is a CSS parser and selection engine. It aims to parse the forward compatible CSS grammar.
+
+This project is forked from <https://www.netsurf-browser.org/projects/libcss/>.
+We integrate the original LibCSS, LibParserUtils, and LibWapcaplet into this repository and use cmake to build the code.
 
 Requirements
 ------------
 
-  LibCSS requires the following tools:
+CSSEngine requires the following tools:
 
-    + A C99 capable C compiler
-    + GNU make or compatible
-    + Pkg-config
-    + Perl (for the testcases)
-    + Python3 (minimum 3.6, for generated selection code)
+   + CMake 
+   + A C99 capable C compiler
+   + GNU make or compatible
+   + Pkg-config
+   + Perl (for the testcases)
+   + Python3 (minimum 3.6, for generated selection code)
 
-  LibCSS also requires the following libraries to be installed:
-
-    +  LibParserUtils
-    +  LibWapcaplet
-
-Compilation
------------
-
-  If necessary, modify the toolchain settings in the Makefile.
-  Invoke make:
-
-      $ make
-
-Regenerating generated selection source code
---------------------------------------------
-
-  To regenerate the selection sources (computed style data accesses),
-  note this requires python3:
-
-      $ make select_generator
-
-Verification
-------------
-
-  To verify that the parser is working, it is necessary to specify a
-  different makefile target than that used for normal compilation, thus:
-
-      $ make test
-
-API documentation
------------------
-
-  Currently, there is none. However, the code is well commented and the
-  public API may be found in the "include" directory. The testcase sources
-  may also be of use in working out how to use it.
+Building
+--------
 

@@ -1,6 +1,6 @@
-# This file overrides the behavior of find_package for FooBar projects.
+# This file overrides the behavior of find_package for CSSEng projects.
 #
-# CMake provides Find modules that are used within FooBar. However there are ports
+# CMake provides Find modules that are used within CSSEng. However there are ports
 # where the default behavior does not work and they need to explicitly set their
 # values. There are also targets available in later versions of CMake which are
 # nicer to work with.
