@@ -1,13 +1,21 @@
-# css
+include(GlobalCommon)
+include(target/CSSEng)
+
+CSSENG_EXECUTABLE_DECLARE(examples)
+
 list(APPEND examples_INCLUDE_DIRECTORIES
-    ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/include
+    ${CSSENG_DIR}/include
 )
 
-list(APPEND examples_SOURCES
+set(examples_SOURCES
     example1.c
 )
 
-include_directories(${examples_INCLUDE_DIRECTORIES})
-add_executable(examples ${examples_SOURCES})
-target_link_libraries(examples CSSEng:CSSEng)
+set(examples_LIBRARIES
+    CSSEng::CSSEng
+)
+
+CSSENG_EXECUTABLE(examples)
+
+CSSENG_COMPUTE_SOURCES(examples)
+CSSENG_FRAMEWORK(examples)

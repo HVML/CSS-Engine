@@ -21,7 +21,7 @@ extern "C" {
 #include "csseng_properties.h"
 #include "csseng_select.h"
 #include "csseng_stylesheet.h"
-#include "csseng_font_face.h"
+#include "csseng_fontface.h"
 
 #ifdef __cplusplus
 }

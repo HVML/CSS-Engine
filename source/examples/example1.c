@@ -10,7 +10,7 @@
 #include <string.h>
 
 /* The entire API is available through this header. */
-#include <libcss/libcss.h>
+#include "csseng.h"
 
 
 /* This macro is used to silence compiler warnings about unused function
@@ -392,6 +392,9 @@ css_error node_has_name(void *pw, void *n,
 {
 	lwc_string *node = n;
 	UNUSED(pw);
+	UNUSED(node);
+	UNUSED(qname);
+	UNUSED(match);
 	assert(lwc_string_caseless_isequal(node, qname->name, match) ==
 			lwc_error_ok);
 	return CSS_OK;
