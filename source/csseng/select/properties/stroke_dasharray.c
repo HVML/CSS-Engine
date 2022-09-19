@@ -143,6 +143,7 @@ css_error css__cascade_stroke_dasharray(uint32_t opv, css_style *style,
 css_error css__set_stroke_dasharray_from_hint(const css_hint *hint,
 		css_computed_style *style)
 {
+    (void)hint;
     return set_stroke_dasharray(style, CSS_STROKE_DASHARRAY_NONE,  0, NULL, NULL);
 }
 
@@ -155,7 +156,6 @@ css_error css__compose_stroke_dasharray(const css_computed_style *parent,
 		const css_computed_style *child,
 		css_computed_style *result)
 {
-    int32_t index = 0;
     int32_t size = 0;
     css_error error;
     css_fixed* values = NULL;

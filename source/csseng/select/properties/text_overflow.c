@@ -108,6 +108,7 @@ css_error css__compose_text_overflow(const css_computed_style *parent,
 		const css_computed_style *child,
 		css_computed_style *result)
 {
+	(void)parent;
 	lwc_string *value;
 	uint8_t type = get_text_overflow(child, &value);
 	return set_text_overflow(result, type, value);

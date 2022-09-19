@@ -97,6 +97,7 @@ css_error css__compose_enable_background(const css_computed_style *parent,
         const css_computed_style *child,
         css_computed_style *result)
 {
+    (void)parent;
     uint8_t type = get_enable_background(child);
     return set_enable_background(result, type);
 }

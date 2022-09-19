@@ -1891,7 +1891,7 @@ static inline css_error set_grid_template_columns(css_computed_style *style, uin
 
     style->i.grid_template_columns = (css_fixed*) malloc(size * sizeof(css_fixed));
     style->i.grid_template_columns_unit = (css_unit*) malloc(size *sizeof(css_unit));
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
         style->i.grid_template_columns[i] = values[i];
         style->i.grid_template_columns_unit[i] = units[i];
@@ -1918,7 +1918,7 @@ static inline css_error set_grid_template_rows(css_computed_style *style, uint8_
 
     style->i.grid_template_rows = (css_fixed*) malloc(size * sizeof(css_fixed));
     style->i.grid_template_rows_unit = (css_unit*) malloc(size *sizeof(css_unit));
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
         style->i.grid_template_rows[i] = values[i];
         style->i.grid_template_rows_unit[i] = units[i];
@@ -2960,7 +2960,7 @@ static inline css_error set_stroke_dasharray(css_computed_style *style, uint8_t 
 
     style->i.stroke_dasharray = (css_fixed*) malloc(size * sizeof(css_fixed));
     style->i.stroke_dasharray_unit = (css_unit*) malloc(size *sizeof(css_unit));
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
         style->i.stroke_dasharray[i] = values[i];
         style->i.stroke_dasharray_unit[i] = units[i];

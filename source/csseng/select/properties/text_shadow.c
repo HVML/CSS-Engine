@@ -128,6 +128,7 @@ css_error css__cascade_text_shadow(uint32_t opv, css_style *style,
 css_error css__set_text_shadow_from_hint(const css_hint *hint,
         css_computed_style *style)
 {
+    (void)hint;
     return set_text_shadow(style, CSS_TEXT_SHADOW_NONE,  0, 0, 0, 0, 0, 0, 0);
 }
 

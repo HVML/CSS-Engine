@@ -8,9 +8,8 @@
 #include <assert.h>
 #include <string.h>
 
-#include <libwapcaplet/libwapcaplet.h>
-
-#include <libcss/select.h>
+#include "csseng_wapcaplet.h"
+#include "csseng_select.h"
 
 #include "bytecode/bytecode.h"
 #include "bytecode/opcodes.h"

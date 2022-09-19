@@ -137,6 +137,7 @@ css_error css__cascade_grid_template_columns(uint32_t opv, css_style *style,
 css_error css__set_grid_template_columns_from_hint(const css_hint *hint,
         css_computed_style *style)
 {
+    (void)hint;
     return set_grid_template_columns(style, CSS_GRID_TEMPLATE_COLUMNS_AUTO, 0, NULL, NULL);
 }
 
@@ -149,7 +150,6 @@ css_error css__compose_grid_template_columns(const css_computed_style *parent,
         const css_computed_style *child,
         css_computed_style *result)
 {
-    int32_t index = 0;
     int32_t size = 0;
     css_error error;
     css_fixed* values = NULL;

@@ -163,6 +163,7 @@ css_error css__compose_comp_op(const css_computed_style *parent,
         const css_computed_style *child,
         css_computed_style *result)
 {
+    (void)parent;
     uint8_t type = get_comp_op(child);
     return set_comp_op(result, type);
 }
