@@ -1,7 +1,8 @@
-# This file is part of LibCSS.
+# This file is part of CSSEng.
 # Licensed under the MIT License,
 # http://www.opensource.org/licenses/mit-license.php
 # Copyright 2017 Lucas Neves <lcneves@gmail.com>
+# Copyright (C) 2021 Beijing FMSoft Technologies Co., Ltd.
 
 # Configuration of CSS values.
 # The tuples in this set will be unpacked as arguments to the CSSValue
@@ -58,7 +59,7 @@ style = {
     ('text_align', 4),
     ('text_decoration', 5),
     ('text_transform', 3),
-    ('unicode_bidi', 2),
+    ('unicode_bidi', 5),
     ('visibility', 2),
     ('white_space', 3),
     # Style group, with additional value
@@ -148,6 +149,51 @@ style = {
     ('word_spacing', 2, 'length',
         'CSS_WORD_SPACING_SET', 'CSS_WORD_SPACING_NORMAL'),
     ('writing_mode', 2, None, None, 'CSS_WRITING_MODE_HORIZONTAL_TB'),
+    ('grid_template_columns', 2, None, None, 'CSS_GRID_TEMPLATE_COLUMNS_SET', None, ('get', 'set')),
+    ('grid_template_rows', 2, None, None, 'CSS_GRID_TEMPLATE_ROWS_SET', None, ('get', 'set')),
+    ('grid_column_start', 2, 'length', 'CSS_GRID_COLUMN_START_SET'),
+    ('grid_column_end', 2, 'length', 'CSS_GRID_COLUMN_END_SET'),
+    ('grid_row_start', 2, 'length', 'CSS_GRID_ROW_START_SET'),
+    ('grid_row_end', 2, 'length', 'CSS_GRID_ROW_END_SET'),
+    ('border_top_left_radius', 2, 'length', 'CSS_BORDER_TOP_LEFT_RADIUS_SET'),
+    ('border_top_right_radius', 2, 'length', 'CSS_BORDER_TOP_RIGHT_RADIUS_SET'),
+    ('border_bottom_left_radius', 2, 'length', 'CSS_BORDER_BOTTOM_LEFT_RADIUS_SET'),
+    ('border_bottom_right_radius', 2, 'length', 'CSS_BORDER_BOTTOM_RIGHT_RADIUS_SET'),
+    ('text_align_last', 4),
+    ('text_justify', 4),
+    ('text_overflow', 2, 'string'),
+    ('text_shadow', 5, None, None, 'CSS_TEXT_SHADOW_SET', None, ('get', 'set')),
+    ('word_break', 4),
+    ('word_wrap', 4),
+    ('baseline_shift', 4),
+    ('clip_path', 1, 'string'),
+    ('clip_rule', 4),
+    ('comp_op', 5),
+    ('enable_background', 5),
+    ('fill', 3, None, None, 'CSS_FILL_NONE', None, ('get', 'set')),
+    ('fill_opacity', 1, 'fixed', 'CSS_FILL_OPACITY_SET'),
+    ('fill_rule', 3),
+    ('filter', 1, 'string'),
+    ('flood_color', 1, 'color'),
+    ('flood_opacity', 1, 'fixed', 'CSS_FLOOD_OPACITY_SET'),
+    ('font_stretch', 5),
+    ('marker_start', 1, 'string'),
+    ('marker_mid', 1, 'string'),
+    ('marker_end', 1, 'string'),
+    ('mask', 1, 'string'),
+    ('shape_rendering', 5),
+    ('stop_color', 1, 'color'),
+    ('stop_opacity', 1, 'fixed', 'CSS_FLOOD_OPACITY_SET'),
+    ('stroke', 3, None, None, 'CSS_STROKE_NONE', None, ('get', 'set')),
+    ('stroke_width', 2, 'length', 'CSS_STROKE_WIDTH_SET'),
+    ('stroke_opacity', 1, 'fixed', 'CSS_STROKE_OPACITY_SET'),
+    ('stroke_dasharray', 2, None, None, 'CSS_STROKE_DASHARRAY_SET', None, ('get', 'set')),
+    ('stroke_dashoffset', 2, 'length', 'CSS_STROKE_DASHOFFSET_SET'),
+    ('stroke_linecap', 4),
+    ('stroke_linejoin', 4),
+    ('stroke_miterlimit', 1, 'fixed', 'CSS_STROKE_MITERLIMIT_SET'),
+    ('text_anchor', 4),
+    ('text_rendering', 4),
     # Uncommon group, arrays
     ('counter_increment', 1, 'counter_arr', None, 'CSS_COUNTER_INCREMENT_NONE',
         'Encode counter_increment as an array of name, value pairs, '

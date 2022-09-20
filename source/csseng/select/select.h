@@ -12,7 +12,7 @@
 #include <stdint.h>
 
 #include "csseng_select.h"
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 
 /**
  * Item in the reject cache (only class and id types are valid)

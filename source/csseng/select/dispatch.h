@@ -13,7 +13,7 @@
 #include "csseng_errors.h"
 #include "csseng_computed.h"
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "bytecode/bytecode.h"
 #include "select/select.h"
 

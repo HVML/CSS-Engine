@@ -11,7 +11,7 @@
 
 #include "csseng_fpmath.h"
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "bytecode/bytecode.h"
 #include "parse/mq.h"
 #include "parse/properties/utils.h"

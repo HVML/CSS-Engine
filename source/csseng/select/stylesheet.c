@@ -9,7 +9,7 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "bytecode/bytecode.h"
 #include "parse/language.h"
 #include "parse/mq.h"

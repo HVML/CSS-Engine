@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "select/hash.h"
 #include "select/mq.h"
 #include "utils/utils.h"

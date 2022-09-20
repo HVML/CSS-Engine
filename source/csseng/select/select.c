@@ -13,7 +13,7 @@
 
 #include "bytecode/bytecode.h"
 #include "bytecode/opcodes.h"
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "select/arena.h"
 #include "select/computed.h"
 #include "select/dispatch.h"

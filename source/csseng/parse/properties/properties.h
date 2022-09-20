@@ -9,7 +9,7 @@
 #ifndef css_css__parse_properties_properties_h_
 #define css_css__parse_properties_properties_h_
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "lex/lex.h"
 #include "parse/language.h"
 #include "parse/propstrings.h"

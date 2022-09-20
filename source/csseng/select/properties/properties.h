@@ -12,7 +12,7 @@
 #include "csseng_errors.h"
 #include "csseng_computed.h"
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "select/select.h"
 
 #define PROPERTY_FUNCS(pname)                                           \
