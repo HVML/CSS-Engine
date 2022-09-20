@@ -4,10 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/input/inputstream.h>
-
-#include <libcss/libcss.h>
-
+#include "csseng.h"
+#include "parser-input/inputstream.h"
 #include "charset/detect.h"
 #include "lex/lex.h"
 #include "utils/utils.h"

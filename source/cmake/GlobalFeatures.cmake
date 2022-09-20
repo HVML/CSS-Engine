@@ -80,7 +80,7 @@ macro(CSSENG_OPTION_BEGIN)
     endif ()
 
     CSSENG_OPTION_DEFINE(ENABLE_DEVELOPER_MODE "Toggle developer mode" PUBLIC OFF)
-    CSSENG_OPTION_DEFINE(ENABLE_API_TESTS "Enable public API unit tests" PUBLIC OFF)
+    CSSENG_OPTION_DEFINE(ENABLE_API_TESTS "Enable public API unit tests" PUBLIC ON)
 
     CSSENG_OPTION_DEFINE(USE_SYSTEM_MALLOC "Toggle system allocator instead of CSSEng's custom allocator" PRIVATE ${USE_SYSTEM_MALLOC_DEFAULT})
 endmacro()

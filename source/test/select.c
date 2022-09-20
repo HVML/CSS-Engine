@@ -5,10 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <libcss/libcss.h>
-#include <libcss/computed.h>
-#include <libcss/select.h>
-#include <libcss/stylesheet.h>
+#include "csseng.h"
 
 #include "utils/utils.h"
 

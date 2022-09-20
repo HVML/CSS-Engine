@@ -3,9 +3,9 @@
 
 #include <string.h>
 
-#include <libcss/types.h>
+#include "csseng_types.h"
 
-#include "stylesheet.h"
+#include "select/stylesheet.h"
 #include "bytecode/bytecode.h"
 #include "bytecode/opcodes.h"
 #include "select/font_face.h"

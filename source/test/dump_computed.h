@@ -1,6 +1,6 @@
-#include <libcss/computed.h>
-#include <libcss/properties.h>
-#include <libcss/types.h>
+#include "csseng_computed.h"
+#include "csseng_properties.h"
+#include "csseng_types.h"
 
 static size_t dump_css_fixed(css_fixed f, char *ptr, size_t len)
 {

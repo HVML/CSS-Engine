@@ -4,10 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/charset/mibenum.h>
+#include "csseng.h"
 
-#include <libcss/libcss.h>
-
+#include "parser-charset/mibenum.h"
 #include "charset/detect.h"
 #include "utils/utils.h"
 
