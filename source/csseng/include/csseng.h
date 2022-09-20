@@ -13,6 +13,7 @@
 extern "C" {
 #endif
 
+#include "csseng_version.h"
 #include "csseng_wapcaplet.h"
 #include "csseng_errors.h"
 #include "csseng_types.h"

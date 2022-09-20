@@ -3,6 +3,8 @@ set_property(DIRECTORY . PROPERTY FOLDER "CSSEng")
 include(GlobalCommon)
 include(MyMacros.cmake)
 
+configure_file(include/csseng_version.h.in ${FORWARDING_HEADERS_DIR}/csseng/csseng_version.h @ONLY)
+
 set(CSSEng_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"
     "${CSSENG_DIR}"
