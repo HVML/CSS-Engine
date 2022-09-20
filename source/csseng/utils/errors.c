@@ -1,5 +1,5 @@
 /*
- * This file is part of LibCSS.
+ * This file is part of CSSEng.
  * Licensed under the MIT License,
  *                http://www.opensource.org/licenses/mit-license.php
  * Copyright 2007 John-Mark Bell <jmb@netsurf-browser.org>
@@ -10,7 +10,7 @@
 #include "csseng_errors.h"
 
 /**
- * Convert a LibCSS error code to a string
+ * Convert a CSSEng error code to a string
  *
  * \param error  The error code to convert
  * \return Pointer to string representation of error, or NULL if unknown.

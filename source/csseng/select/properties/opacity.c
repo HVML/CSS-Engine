@@ -1,5 +1,5 @@
 /*
- * This file is part of LibCSS
+ * This file is part of CSSEng
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
  * Copyright 2011 John-Mark Bell <jmb@netsurf-browser.org>

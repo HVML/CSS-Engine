@@ -1,5 +1,5 @@
 /*
- * This file is part of LibCSS.
+ * This file is part of CSSEng.
  * Licensed under the MIT License,
  *                http://www.opensource.org/licenses/mit-license.php
  * Copyright 2007 John-Mark Bell <jmb@netsurf-browser.org>
@@ -12,10 +12,10 @@
 #include "csseng_errors.h"
 
 /**
- * Convert a ParserUtils error into a LibCSS error
+ * Convert a ParserUtils error into a CSSEng error
  *
  * \param error  The ParserUtils error to convert
- * \return The corresponding LibCSS error
+ * \return The corresponding CSSEng error
  */
 static inline css_error css_error_from_parserutils_error(
 		parserutils_error error)

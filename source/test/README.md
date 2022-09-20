@@ -1,7 +1,7 @@
-LibCSS testcases
+CSSEng testcases
 ===============
 
-Testcases for LibCSS are self-contained binaries which test various parts
+Testcases for CSSEng are self-contained binaries which test various parts
 of the CSS library. These may make use of external data files to drive
 the testing.
 

@@ -151,11 +151,11 @@ size_t css__parse_filesize(const char *filename)
 
 
 /**
- * Convert a string representation of an error name to a LibCSS error code
+ * Convert a string representation of an error name to a CSSEng error code
  *
  * \param str  String containing error name
  * \param len  Length of string (bytes)
- * \return LibCSS error code, or CSS_OK if unknown
+ * \return CSSEng error code, or CSS_OK if unknown
  */
 css_error css_error_from_string(const char *str, size_t len);
 css_error css_error_from_string(const char *str, size_t len)

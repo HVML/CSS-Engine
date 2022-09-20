@@ -1,15 +1,15 @@
-LibCSS API & ABI Changes
+CSSEng API & ABI Changes
 ========================
 
-  This document explains how to upgrade clients to use new versions of LibCSS.
+  This document explains how to upgrade clients to use new versions of CSSEng.
 
 
-LibCSS 0.2.0 --> LibCSS 0.3.0
+CSSEng 0.2.0 --> CSSEng 0.3.0
 -----------------------------
 
   Both the API and ABI are changed.
 
-  LibCSS no longer lets clients provide a memory allocator function.
+  CSSEng no longer lets clients provide a memory allocator function.
   This change affects the following functions:
 
     From include/libcss/computed.h    --  css_computed_style_create()
@@ -22,7 +22,7 @@ LibCSS 0.2.0 --> LibCSS 0.3.0
   There are changes to selection handler callback table:
 
     node_classes
-      LibCSS no longer frees the any array of classes passed to the
+      CSSEng no longer frees the any array of classes passed to the
       node_classes callback.  It does still unref the individual strings.
       This means clients need not allocate a new array each call, but can
       keep the array cached on the node.
@@ -37,7 +37,7 @@ LibCSS 0.2.0 --> LibCSS 0.3.0
       to libcss from document element nodes.
 
 
-LibCSS 0.3.0 --> LibCSS 0.4.0
+CSSEng 0.3.0 --> CSSEng 0.4.0
 -----------------------------
 
   The API is changed.
@@ -57,7 +57,7 @@ LibCSS 0.3.0 --> LibCSS 0.4.0
     Added to       include/libcss/computed.h    --  css_computed_overflow_y()
 
 
-LibCSS 0.5.0 --> LibCSS 0.6.0
+CSSEng 0.5.0 --> CSSEng 0.6.0
 -----------------------------
 
   The API is changed.

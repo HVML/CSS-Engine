@@ -1,7 +1,7 @@
-Using the LibCSS API
+Using the CSSEng API
 ====================
 
-This document explains how to use LibCSS. In addition to this document, please
+This document explains how to use CSSEng. In addition to this document, please
 see the examples and the headers (found in /usr/local/include/libcss or a
 similar location). Experience with C is assumed.
 
@@ -42,19 +42,19 @@ The arguments are as follows:
 | |   CSS_LEVEL_DEFAULT.
 | |
 | + const char *charset
-| |   The encoding of the stylesheet data, or NULL if LibCSS should attempt to
+| |   The encoding of the stylesheet data, or NULL if CSSEng should attempt to
 | |   detect it. If the encoding is known, for example from the Content-Type
 | |   header or a file attribute, then it should be supplied here.
 | |
 | + const char *url
-| |   The URL that the stylesheet was retrieved from. LibCSS uses this along
+| |   The URL that the stylesheet was retrieved from. CSSEng uses this along
 | |   with the resolve function (see below) to convert relative URLs in the
 | |   stylesheet (e.g. imports, background images) to absolute URLs. If the
 | |   stylesheet has no URL, use "".
 | |
 | + const char *title
 | |   This is intended for the stylesheet title (for example from the <link>
-| |   tag).  The title is not used by LibCSS but may be retrieved using
+| |   tag).  The title is not used by CSSEng but may be retrieved using
 | |   css_stylesheet_get_title(). May be NULL if there is no title.
 | |
 | + bool allow_quirks
@@ -88,7 +88,7 @@ The arguments are as follows:
 + css_stylesheet **stylesheet
     Updated with the newly created stylesheet object.
 
-Once the stylesheet has been created, CSS source data can be added to it. LibCSS
+Once the stylesheet has been created, CSS source data can be added to it. CSSEng
 parses the data into internal structures. Only data in memory is supported; you
 must handle reading from files or the network if required. Data is added using
 css_stylesheet_append_data(), for example:
@@ -125,14 +125,14 @@ the computed style that applies to that node. For example, it can be used to
 answer the question "What style should this <h1> element have?"
 
 CSS selectors can be complex and apply to certain arrangments of elements within
-a document tree. Therefore LibCSS has to be able to navigate your document tree
+a document tree. Therefore CSSEng has to be able to navigate your document tree
 and read attributes of it to determine if a style applies. It does this through
-a series of functions that you supply. In this way LibCSS is independent of the
+a series of functions that you supply. In this way CSSEng is independent of the
 representation of the document. For example, with the style rule:
 
   table h2 { color: red; }
 
-when requesting the style for an h2 element node, LibCSS will search its
+when requesting the style for an h2 element node, CSSEng will search its
 ancestors for a table element to determine if this style applies.
 
 The first step in using the Selection API is creating a selection context. This
@@ -178,7 +178,7 @@ The arguments are as follows:
 |
 + void *node
 |   A pointer to the document node for which the style is required. This is a
-|   void pointer and may therefore be of any desired type. LibCSS can not use it
+|   void pointer and may therefore be of any desired type. CSSEng can not use it
 |   directly; instead it gets information about it through the functions given
 |   in the handler argument, described below. Usually this will be a node in a
 |   document tree.

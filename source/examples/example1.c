@@ -1,5 +1,5 @@
 /*
- * LibCSS - example1.c
+ * CSSEng - example1.c
  *
  * Compile this using a command such as:
  *  gcc -g -W -Wall -o example1 example1.c `pkg-config --cflags --libs libcss`
@@ -105,7 +105,7 @@ static css_error set_libcss_node_data(void *pw, void *n,
 static css_error get_libcss_node_data(void *pw, void *n,
 		void **libcss_node_data);
 
-/* Table of function pointers for the LibCSS Select API. */
+/* Table of function pointers for the CSSEng Select API. */
 static css_select_handler select_handler = {
 	CSS_SELECT_HANDLER_VERSION_1,
 
