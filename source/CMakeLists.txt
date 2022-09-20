@@ -3,6 +3,8 @@
 # -----------------------------------------------------------------------------
 add_subdirectory(wtf)
 
+add_subdirectory(tools)
+
 add_subdirectory(csseng)
 
 if (ENABLE_API_TESTS)
