@@ -16,14 +16,13 @@ add_definitions(-DCSSENG_API_VERSION_STRING="${CSSENG_API_VERSION}")
 
 #find_package(ZLIB 1.2.0)
 #find_package(LibXml2 2.8.0)
-
-if (NOT LIBXML2_FOUND)
-    set(ENABLE_XML_DEFAULT OFF)
-    SET_AND_EXPOSE_TO_BUILD(HAVE_LIBXML2 OFF)
-else ()
-    set(ENABLE_XML_DEFAULT ON)
-    SET_AND_EXPOSE_TO_BUILD(HAVE_LIBXML2 ON)
-endif ()
+#if (NOT LIBXML2_FOUND)
+#    set(ENABLE_XML_DEFAULT OFF)
+#    SET_AND_EXPOSE_TO_BUILD(HAVE_LIBXML2 OFF)
+#else ()
+#    set(ENABLE_XML_DEFAULT ON)
+#    SET_AND_EXPOSE_TO_BUILD(HAVE_LIBXML2 ON)
+#endif ()
 
 # Public options specific to the C99 port. Do not add any options here unless
 # there is a strong reason we should support changing the value of the option,
@@ -32,16 +31,14 @@ endif ()
 
 # Private options specific to the C99 port. Changing these options is
 # completely unsupported. They are intended for use only by CSSEng developers.
-#CSSENG_OPTION_DEFINE(USE_ANGLE_WEBGL "Whether to use ANGLE as WebGL backend." PRIVATE OFF)
-#CSSENG_OPTION_DEPEND(ENABLE_WEBGL ENABLE_GRAPHICS_CONTEXT_GL)
 
-CSSENG_OPTION_DEFAULT_PORT_VALUE(ENABLE_XML PUBLIC ${ENABLE_XML_DEFAULT})
+# CSSENG_OPTION_DEFAULT_PORT_VALUE(ENABLE_XML PUBLIC ${ENABLE_XML_DEFAULT})
 
 # Finalize the value for all options. Do not attempt to use an option before
 # this point, and do not attempt to change any option after this point.
 CSSENG_OPTION_END()
 
-set(CSSEng_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/src/csseng/csseng.pc)
+set(CSSEng_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/source/csseng/csseng.pc)
 
 # CMake does not automatically add --whole-archive when building shared objects from
 # a list of convenience libraries. This can lead to missing symbols in the final output.

@@ -24,9 +24,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/source/cmake")
 # -----------------------------------------------------------------------------
 # Determine which port will be built
 # -----------------------------------------------------------------------------
-set(ALL_PORTS C99)
+set(ALL_PORTS GNU)
 
-set(PORT "C99" CACHE STRING "Use C99 as the default port")
+set(PORT "GNU" CACHE STRING "Use GNU as the default port")
 
 list(FIND ALL_PORTS ${PORT} RET)
 if (${RET} EQUAL -1)

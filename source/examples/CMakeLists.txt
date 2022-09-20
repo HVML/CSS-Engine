@@ -4,7 +4,7 @@ include(target/CSSEng)
 CSSENG_EXECUTABLE_DECLARE(examples)
 
 list(APPEND examples_INCLUDE_DIRECTORIES
-    ${CSSENG_DIR}/include
+    ${FORWARDING_HEADERS_DIR}
 )
 
 set(examples_SOURCES

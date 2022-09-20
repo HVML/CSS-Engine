@@ -10,7 +10,7 @@
 #include <string.h>
 
 /* The entire API is available through this header. */
-#include "csseng.h"
+#include <csseng/csseng.h>
 
 
 /* This macro is used to silence compiler warnings about unused function

@@ -11,7 +11,7 @@ set(CSSEng_PRIVATE_INCLUDE_DIRECTORIES
     "${FORWARDING_HEADERS_DIR}"
 )
 
-# TODO: List the headers should be installed to system here.
+# List the headers should be installed to system here.
 set(CSSEng_INSTALLED_HEADERS
     "${CSSENG_DIR}/include/csseng_computed.h"
     "${CSSENG_DIR}/include/csseng_errors.h"
@@ -66,12 +66,15 @@ CSSENG_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
 CSSENG_WRAP_SOURCELIST(${CSSEng_SOURCES})
 
+set(CSSEng_PRIVATE_FRAMEWORK_HEADERS ${CSSEng_INSTALLED_HEADERS})
+
 CSSENG_COPY_FILES(CSSEng_CopyPrivateHeaders
-    DESTINATION ${CSSEng_PRIVATE_FRAMEWORK_HEADERS_DIR}/CSSEng
+    DESTINATION ${CSSEng_PRIVATE_FRAMEWORK_HEADERS_DIR}/csseng
     FILES ${CSSEng_PRIVATE_FRAMEWORK_HEADERS}
     FLATTENED
 )
 list(APPEND CSSEng_INTERFACE_DEPENDENCIES CSSEng_CopyPrivateHeaders)
+
 # CSSEng_CopyPrivateHeaders needs to have a direct or indirect
 # dependency of CSSEng target for CMake Visual Studio generator to
 # eliminate duplicated custom commands. Otherwise, CSSPropertyNames.h
