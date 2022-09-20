@@ -1,4 +1,4 @@
-set(CSSEng_OUTPUT_NAME purc)
+set(CSSEng_OUTPUT_NAME csseng)
 
 list(APPEND CSSEng_LIBRARIES
     CSSEng::WTF
