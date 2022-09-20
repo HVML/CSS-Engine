@@ -13,16 +13,16 @@
 extern "C" {
 #endif
 
-#include "csseng_version.h"
-#include "csseng_wapcaplet.h"
-#include "csseng_errors.h"
-#include "csseng_types.h"
-#include "csseng_functypes.h"
-#include "csseng_computed.h"
-#include "csseng_properties.h"
-#include "csseng_select.h"
-#include "csseng_stylesheet.h"
-#include "csseng_fontface.h"
+#include "csseng-version.h"
+#include "csseng-wapcaplet.h"
+#include "csseng-errors.h"
+#include "csseng-types.h"
+#include "csseng-functypes.h"
+#include "csseng-computed.h"
+#include "csseng-properties.h"
+#include "csseng-select.h"
+#include "csseng-stylesheet.h"
+#include "csseng-fontface.h"
 
 #ifdef __cplusplus
 }

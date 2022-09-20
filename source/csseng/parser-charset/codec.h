@@ -10,7 +10,7 @@
 
 #include <inttypes.h>
 
-#include "csseng_parserutils.h"
+#include "csseng-parserutils.h"
 
 #ifdef __cplusplus
 extern "C" {

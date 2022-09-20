@@ -11,7 +11,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "csseng_select.h"
+#include "csseng-select.h"
 #include "select/stylesheet.h"
 
 /**

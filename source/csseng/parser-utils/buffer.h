@@ -8,7 +8,7 @@
 #ifndef parserutils_utils_buffer_h_
 #define parserutils_utils_buffer_h_
 
-#include "csseng_parserutils.h"
+#include "csseng-parserutils.h"
 
 #ifdef __cplusplus
 extern "C" {

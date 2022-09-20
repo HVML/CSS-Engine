@@ -8,11 +8,11 @@
 #ifndef css_lex_lex_h_
 #define css_lex_lex_h_
 
-#include "csseng_wapcaplet.h"
+#include "csseng-wapcaplet.h"
 
-#include "csseng_errors.h"
-#include "csseng_functypes.h"
-#include "csseng_types.h"
+#include "csseng-errors.h"
+#include "csseng-functypes.h"
+#include "csseng-types.h"
 
 #include "parser-input/inputstream.h"
 

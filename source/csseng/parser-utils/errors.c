@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-#include "csseng_parserutils.h"
+#include "csseng-parserutils.h"
 
 /**
  * Convert a parserutils error code to a string

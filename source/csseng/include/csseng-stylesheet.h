@@ -8,9 +8,9 @@
 #ifndef libcss_stylesheet_h_
 #define libcss_stylesheet_h_
 
-#include "csseng_errors.h"
-#include "csseng_types.h"
-#include "csseng_properties.h"
+#include "csseng-errors.h"
+#include "csseng-types.h"
+#include "csseng-properties.h"
 
 #ifdef __cplusplus
 extern "C" {

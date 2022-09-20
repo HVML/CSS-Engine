@@ -11,12 +11,12 @@
 #include <inttypes.h>
 #include <stdio.h>
 
-#include "csseng_wapcaplet.h"
+#include "csseng-wapcaplet.h"
 
-#include "csseng_errors.h"
-#include "csseng_functypes.h"
-#include "csseng_stylesheet.h"
-#include "csseng_types.h"
+#include "csseng-errors.h"
+#include "csseng-functypes.h"
+#include "csseng-stylesheet.h"
+#include "csseng-types.h"
 
 #include "bytecode/bytecode.h"
 #include "parse/parse.h"

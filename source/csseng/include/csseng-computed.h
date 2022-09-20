@@ -9,11 +9,11 @@
 #ifndef libcss_computed_h_
 #define libcss_computed_h_
 
-#include "csseng_wapcaplet.h"
-#include "csseng_errors.h"
-#include "csseng_functypes.h"
-#include "csseng_properties.h"
-#include "csseng_types.h"
+#include "csseng-wapcaplet.h"
+#include "csseng-errors.h"
+#include "csseng-functypes.h"
+#include "csseng-properties.h"
+#include "csseng-types.h"
 
 #ifdef __cplusplus
 extern "C" {

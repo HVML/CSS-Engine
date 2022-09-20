@@ -3,7 +3,7 @@ set_property(DIRECTORY . PROPERTY FOLDER "CSSEng")
 include(GlobalCommon)
 include(MyMacros.cmake)
 
-configure_file(include/csseng_version.h.in ${FORWARDING_HEADERS_DIR}/csseng/csseng_version.h @ONLY)
+configure_file(include/csseng-version.h.in ${FORWARDING_HEADERS_DIR}/csseng/csseng-version.h @ONLY)
 
 set(CSSEng_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"
@@ -15,18 +15,18 @@ set(CSSEng_PRIVATE_INCLUDE_DIRECTORIES
 
 # List the headers should be installed to system here.
 set(CSSEng_INSTALLED_HEADERS
-    "${CSSENG_DIR}/include/csseng_computed.h"
-    "${CSSENG_DIR}/include/csseng_errors.h"
-    "${CSSENG_DIR}/include/csseng_fontface.h"
-    "${CSSENG_DIR}/include/csseng_fpmath.h"
-    "${CSSENG_DIR}/include/csseng_functypes.h"
-    "${CSSENG_DIR}/include/csseng_hint.h"
-    "${CSSENG_DIR}/include/csseng_parserutils.h"
-    "${CSSENG_DIR}/include/csseng_properties.h"
-    "${CSSENG_DIR}/include/csseng_select.h"
-    "${CSSENG_DIR}/include/csseng_stylesheet.h"
-    "${CSSENG_DIR}/include/csseng_types.h"
-    "${CSSENG_DIR}/include/csseng_wapcaplet.h"
+    "${CSSENG_DIR}/include/csseng-computed.h"
+    "${CSSENG_DIR}/include/csseng-errors.h"
+    "${CSSENG_DIR}/include/csseng-fontface.h"
+    "${CSSENG_DIR}/include/csseng-fpmath.h"
+    "${CSSENG_DIR}/include/csseng-functypes.h"
+    "${CSSENG_DIR}/include/csseng-hint.h"
+    "${CSSENG_DIR}/include/csseng-parserutils.h"
+    "${CSSENG_DIR}/include/csseng-properties.h"
+    "${CSSENG_DIR}/include/csseng-select.h"
+    "${CSSENG_DIR}/include/csseng-stylesheet.h"
+    "${CSSENG_DIR}/include/csseng-types.h"
+    "${CSSENG_DIR}/include/csseng-wapcaplet.h"
     "${CSSENG_DIR}/include/csseng.h"
 )
 

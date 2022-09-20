@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-#include "csseng_errors.h"
+#include "csseng-errors.h"
 
 /**
  * Convert a CSSEng error code to a string

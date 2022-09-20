@@ -11,7 +11,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-#include "csseng_parserutils.h"
+#include "csseng-parserutils.h"
 
 #ifdef __cplusplus
 extern "C" {

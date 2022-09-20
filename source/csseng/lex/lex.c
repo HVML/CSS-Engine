@@ -30,7 +30,7 @@
 #include "parser-input/inputstream.h"
 #include "parser-utils/buffer.h"
 
-#include "csseng_errors.h"
+#include "csseng-errors.h"
 
 #include "lex/lex.h"
 #include "utils/parserutilserror.h"

@@ -10,7 +10,7 @@
 #include <string.h>
 #include <assert.h>
 
-#include "csseng_wapcaplet.h"
+#include "csseng-wapcaplet.h"
 
 #ifndef UNUSED
 #define UNUSED(x) ((x) = (x))

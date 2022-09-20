@@ -9,8 +9,8 @@
 #ifndef css_select_properties_h_
 #define css_select_properties_h_
 
-#include "csseng_errors.h"
-#include "csseng_computed.h"
+#include "csseng-errors.h"
+#include "csseng-computed.h"
 
 #include "select/stylesheet.h"
 #include "select/select.h"

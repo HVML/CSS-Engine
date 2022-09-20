@@ -10,8 +10,8 @@
 
 #include <stdint.h>
 
-#include "csseng_errors.h"
-#include "csseng_computed.h"
+#include "csseng-errors.h"
+#include "csseng-computed.h"
 
 #include "select/stylesheet.h"
 #include "bytecode/bytecode.h"

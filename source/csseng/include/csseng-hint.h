@@ -8,12 +8,12 @@
 #ifndef libcss_hint_h_
 #define libcss_hint_h_
 
-#include "csseng_wapcaplet.h"
+#include "csseng-wapcaplet.h"
 
-#include "csseng_computed.h"
-#include "csseng_errors.h"
-#include "csseng_functypes.h"
-#include "csseng_types.h"
+#include "csseng-computed.h"
+#include "csseng-errors.h"
+#include "csseng-functypes.h"
+#include "csseng-types.h"
 
 #ifdef __cplusplus
 extern "C" {

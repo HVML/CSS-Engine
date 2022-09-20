@@ -12,7 +12,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "csseng_types.h"
+#include "csseng-types.h"
 
 #ifdef __cplusplus
 extern "C" {

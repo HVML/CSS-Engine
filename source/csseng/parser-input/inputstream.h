@@ -20,7 +20,7 @@ extern "C"
 #include <stdlib.h>
 #include <inttypes.h>
 
-#include "csseng_parserutils.h"
+#include "csseng-parserutils.h"
 #include "parser-charset/utf8.h"
 #include "parser-utils/buffer.h"
 

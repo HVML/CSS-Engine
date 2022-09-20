@@ -8,8 +8,8 @@
 #ifndef css_utils_parserutilserror_h_
 #define css_utils_parserutilserror_h_
 
-#include "csseng_parserutils.h"
-#include "csseng_errors.h"
+#include "csseng-parserutils.h"
+#include "csseng-errors.h"
 
 /**
  * Convert a ParserUtils error into a CSSEng error

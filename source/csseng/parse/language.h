@@ -11,8 +11,8 @@
 #include "parser-utils/stack.h"
 #include "parser-utils/vector.h"
 
-#include "csseng_functypes.h"
-#include "csseng_types.h"
+#include "csseng-functypes.h"
+#include "csseng-types.h"
 
 #include "lex/lex.h"
 #include "parse/parse.h"

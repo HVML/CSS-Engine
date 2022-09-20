@@ -8,11 +8,11 @@
 #ifndef libcss_select_h_
 #define libcss_select_h_
 
-#include "csseng_errors.h"
-#include "csseng_functypes.h"
-#include "csseng_hint.h"
-#include "csseng_types.h"
-#include "csseng_computed.h"
+#include "csseng-errors.h"
+#include "csseng-functypes.h"
+#include "csseng-hint.h"
+#include "csseng-types.h"
+#include "csseng-computed.h"
 
 #ifdef __cplusplus
 extern "C" {

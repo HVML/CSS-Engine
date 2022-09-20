@@ -12,8 +12,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "csseng_wapcaplet.h"
-#include "csseng_fpmath.h"
+#include "csseng-wapcaplet.h"
+#include "csseng-fpmath.h"
 
 #ifdef __cplusplus
 extern "C"

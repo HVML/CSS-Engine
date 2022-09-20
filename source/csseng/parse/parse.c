@@ -9,7 +9,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 
-#include "csseng_wapcaplet.h"
+#include "csseng-wapcaplet.h"
 
 #include "parser-input/inputstream.h"
 #include "parser-utils/stack.h"
