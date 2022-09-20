@@ -26,6 +26,10 @@ void __assert2(const char *expr, const char *function,
 	exit(EXIT_FAILURE);
 }
 
+#ifdef assert
+#undef assert
+#endif
+
 #define assert(expr) \
   ((void) ((expr) || (__assert2 (#expr, __func__, __FILE__, __LINE__), 0)))
 

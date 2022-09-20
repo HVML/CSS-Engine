@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "charset/aliases.h"
+#include "parser-charset/aliases.h"
 
 #include "testutils.h"
 

@@ -10,10 +10,9 @@
 #define lwc_tests_h_
 
 #include <signal.h>
-
 #include <check.h>
 
-#include "libwapcaplet/libwapcaplet.h"
+#include "csseng_wapcaplet.h"
 
 extern void lwc_basic_suite(SRunner *);
 extern void lwc_memory_suite(SRunner *);

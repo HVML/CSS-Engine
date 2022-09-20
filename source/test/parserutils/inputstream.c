@@ -1,9 +1,9 @@
 #include <inttypes.h>
 #include <stdio.h>
 
-#include <parserutils/parserutils.h>
-#include <parserutils/charset/utf8.h>
-#include <parserutils/input/inputstream.h>
+#include "csseng_parserutils.h"
+#include "parser-charset/utf8.h"
+#include "parser-input/inputstream.h"
 
 #include "utils/utils.h"
 

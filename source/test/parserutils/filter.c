@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parserutils/parserutils.h>
+#include "csseng_parserutils.h"
 
-#include "utils/utils.h"
-
-#include "input/filter.h"
+#include "parser-utils/utils.h"
+#include "parser-input/filter.h"
 
 #include "testutils.h"
 

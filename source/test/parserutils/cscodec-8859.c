@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <parserutils/charset/codec.h>
+#include "parser-charset/codec.h"
 
 #include "utils/utils.h"
 

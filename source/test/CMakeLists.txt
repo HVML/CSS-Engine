@@ -132,3 +132,9 @@ set(select_LIBRARIES
 CSSENG_EXECUTABLE(select)
 CSSENG_COMPUTE_SOURCES(select)
 
+if (LIBCHECK_FOUND)
+    add_subdirectory(wapcaplet)
+endif ()
+
+add_subdirectory(parserutils)
+

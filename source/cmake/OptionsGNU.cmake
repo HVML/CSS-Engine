@@ -14,6 +14,7 @@ set(CSSENG_HEADER_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}/csseng" CACHE PATH "A
 
 add_definitions(-DCSSENG_API_VERSION_STRING="${CSSENG_API_VERSION}")
 
+find_package(LibCheck 0.15.2)
 #find_package(ZLIB 1.2.0)
 #find_package(LibXml2 2.8.0)
 #if (NOT LIBXML2_FOUND)

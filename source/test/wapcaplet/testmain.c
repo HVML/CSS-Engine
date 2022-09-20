@@ -6,7 +6,6 @@
  *                Daniel Silverstone <dsilvers@netsurf-browser.org>
  */
 
-#include <check.h>
 #include <stdlib.h>
 
 #include "tests.h"
